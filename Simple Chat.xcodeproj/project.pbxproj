@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
+		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
+		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
+		5A31628929C6252F00BA6E4D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628829C6252F00BA6E4D /* Preview Assets.xcassets */; };
+		5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31629A29C6324700BA6E4D /* Fonts.swift */; };
+		5A3162A029C6399500BA6E4D /* CustomTapBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31629F29C6399500BA6E4D /* CustomTapBar.swift */; };
+		5A3162A429C835A500BA6E4D /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3162A329C835A500BA6E4D /* TabBarButton.swift */; };
+		5A3162A529C8386200BA6E4D /* LexendDeca-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A31629629C62E0A00BA6E4D /* LexendDeca-Medium.ttf */; };
+		5A3162A629C8386400BA6E4D /* LexendDeca-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A31629829C62E1C00BA6E4D /* LexendDeca-SemiBold.ttf */; };
+		5A3162A729C8386700BA6E4D /* LexendDeca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A31629729C62E0A00BA6E4D /* LexendDeca-Regular.ttf */; };
+		5A3162A829C8386900BA6E4D /* LexendDeca-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A31629529C62DFA00BA6E4D /* LexendDeca-Bold.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
+		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5A31628529C6252F00BA6E4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A31628829C6252F00BA6E4D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A31629529C62DFA00BA6E4D /* LexendDeca-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Bold.ttf"; sourceTree = "<group>"; };
+		5A31629629C62E0A00BA6E4D /* LexendDeca-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Medium.ttf"; sourceTree = "<group>"; };
+		5A31629729C62E0A00BA6E4D /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
+		5A31629829C62E1C00BA6E4D /* LexendDeca-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-SemiBold.ttf"; sourceTree = "<group>"; };
+		5A31629A29C6324700BA6E4D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		5A31629F29C6399500BA6E4D /* CustomTapBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapBar.swift; sourceTree = "<group>"; };
+		5A3162A329C835A500BA6E4D /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A31627B29C6252D00BA6E4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A31627529C6252D00BA6E4D = {
+			isa = PBXGroup;
+			children = (
+				5A31628029C6252D00BA6E4D /* Simple Chat */,
+				5A31627F29C6252D00BA6E4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A31627F29C6252D00BA6E4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A31627E29C6252D00BA6E4D /* Simple Chat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A31628029C6252D00BA6E4D /* Simple Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */,
+				5A31628F29C627EC00BA6E4D /* Views */,
+				5A31629029C627F600BA6E4D /* ViewModels */,
+				5A31629129C6280100BA6E4D /* Models */,
+				5A31629229C6280500BA6E4D /* Services */,
+				5A31629329C6280E00BA6E4D /* Helpers */,
+				5A31629429C6286800BA6E4D /* Fonts */,
+				5A31628529C6252F00BA6E4D /* Assets.xcassets */,
+				5A31628729C6252F00BA6E4D /* Preview Content */,
+			);
+			path = "Simple Chat";
+			sourceTree = "<group>";
+		};
+		5A31628729C6252F00BA6E4D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5A31628829C6252F00BA6E4D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A31628F29C627EC00BA6E4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A31628329C6252D00BA6E4D /* RootView.swift */,
+				5A31629C29C6395C00BA6E4D /* CustomTapBar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5A31629029C627F600BA6E4D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5A31629129C6280100BA6E4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5A31629229C6280500BA6E4D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5A31629329C6280E00BA6E4D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5A31629A29C6324700BA6E4D /* Fonts.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5A31629429C6286800BA6E4D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5A31629829C62E1C00BA6E4D /* LexendDeca-SemiBold.ttf */,
+				5A31629629C62E0A00BA6E4D /* LexendDeca-Medium.ttf */,
+				5A31629729C62E0A00BA6E4D /* LexendDeca-Regular.ttf */,
+				5A31629529C62DFA00BA6E4D /* LexendDeca-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5A31629C29C6395C00BA6E4D /* CustomTapBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A31629F29C6399500BA6E4D /* CustomTapBar.swift */,
+				5A3162A329C835A500BA6E4D /* TabBarButton.swift */,
+			);
+			path = CustomTapBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A31627D29C6252D00BA6E4D /* Simple Chat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A31628C29C6252F00BA6E4D /* Build configuration list for PBXNativeTarget "Simple Chat" */;
+			buildPhases = (
+				5A31627A29C6252D00BA6E4D /* Sources */,
+				5A31627B29C6252D00BA6E4D /* Frameworks */,
+				5A31627C29C6252D00BA6E4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Simple Chat";
+			productName = "Simple Chat";
+			productReference = 5A31627E29C6252D00BA6E4D /* Simple Chat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A31627629C6252D00BA6E4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					5A31627D29C6252D00BA6E4D = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 5A31627929C6252D00BA6E4D /* Build configuration list for PBXProject "Simple Chat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A31627529C6252D00BA6E4D;
+			productRefGroup = 5A31627F29C6252D00BA6E4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A31627D29C6252D00BA6E4D /* Simple Chat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A31627C29C6252D00BA6E4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A3162A729C8386700BA6E4D /* LexendDeca-Regular.ttf in Resources */,
+				5A3162A629C8386400BA6E4D /* LexendDeca-SemiBold.ttf in Resources */,
+				5A3162A829C8386900BA6E4D /* LexendDeca-Bold.ttf in Resources */,
+				5A31628929C6252F00BA6E4D /* Preview Assets.xcassets in Resources */,
+				5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */,
+				5A3162A529C8386200BA6E4D /* LexendDeca-Medium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A31627A29C6252D00BA6E4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A31628429C6252D00BA6E4D /* RootView.swift in Sources */,
+				5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */,
+				5A3162A029C6399500BA6E4D /* CustomTapBar.swift in Sources */,
+				5A3162A429C835A500BA6E4D /* TabBarButton.swift in Sources */,
+				5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5A31628A29C6252F00BA6E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A31628B29C6252F00BA6E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A31628D29C6252F00BA6E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Simple Chat/Preview Content\"";
+				DEVELOPMENT_TEAM = G2S5NXG875;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Simple-Chat-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "test.Simple-Chat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A31628E29C6252F00BA6E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Simple Chat/Preview Content\"";
+				DEVELOPMENT_TEAM = G2S5NXG875;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Simple-Chat-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "test.Simple-Chat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A31627929C6252D00BA6E4D /* Build configuration list for PBXProject "Simple Chat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A31628A29C6252F00BA6E4D /* Debug */,
+				5A31628B29C6252F00BA6E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A31628C29C6252F00BA6E4D /* Build configuration list for PBXNativeTarget "Simple Chat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A31628D29C6252F00BA6E4D /* Debug */,
+				5A31628E29C6252F00BA6E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A31627629C6252D00BA6E4D /* Project object */;
+}
