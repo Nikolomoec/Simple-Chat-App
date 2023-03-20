@@ -21,6 +21,7 @@ struct CustomTapBar: View {
         HStack {
             
             Button {
+                
                 selectedTab = .contacts
                 
             } label: {
