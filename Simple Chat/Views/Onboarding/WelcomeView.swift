@@ -32,23 +32,18 @@ struct WelcomeView: View {
             .multilineTextAlignment(.center)
             
             Spacer()
-                Button {
-                    currentStep = .phone
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 7)
-                            .frame(width: 340, height: 55)
-                            .foregroundColor(Color("primaryButton"))
-                        Text("Continue")
-                            .foregroundColor(Color("backgroundScreen"))
-                            .font(.startButton)
-                    }
-                }
-                .padding(.bottom, 5)
-                
-                Text("By tapping continue you agree to our Privacy Policy")
-                    .font(.privacy)
-                    .padding(.bottom, 43)
+            
+            Button {
+                currentStep = .phone
+            } label: {
+                Text("Continue")
+            }
+            .buttonStyle(StartButtonStyle())
+            .padding(.bottom, 5)
+            
+            Text("By tapping continue you agree to our Privacy Policy")
+                .font(.privacy)
+                .padding(.bottom, 43)
         }
     }
 }

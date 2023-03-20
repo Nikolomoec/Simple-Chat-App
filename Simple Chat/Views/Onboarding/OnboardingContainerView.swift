@@ -32,13 +32,13 @@ struct OnboardingContainerView: View {
                 WelcomeView(currentStep: $currentStep)
                 
             case .phone:
-                PhoneNumberView()
+                PhoneNumberView(currentStep: $currentStep)
                 
             case .verification:
-                AuthView()
+                AuthView(currentStep: $currentStep)
                 
             case .profile:
-                CreateProfileView()
+                CreateProfileView(currentStep: $currentStep)
                 
             case .contacts:
                 SyncContactsView()

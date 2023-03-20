@@ -8,13 +8,70 @@
 import SwiftUI
 
 struct PhoneNumberView: View {
+    
+    @Binding var currentStep: Onboarding
+    
+    @State private var phoneNumber = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            
+            VStack {
+                
+                Text("Verification")
+                    .font(.verificationTitle)
+                    .padding(.top, 40)
+                
+                Text("Enter your mobile number below. We’ll send you a verification code after.")
+                    .font(.verificationDesc_numberPlaceHolder)
+                    .padding(.top, 24)
+                    .padding(.horizontal, 39)
+                    .padding(.bottom, 34)
+            }
+            .foregroundColor(Color("secondaryText"))
+            .multilineTextAlignment(.center)
+            
+            // Number TextField
+            ZStack {
+                
+                Rectangle()
+                    .frame(height: 56)
+                    .foregroundColor(Color("TextField"))
+                
+                HStack {
+                    TextField("e.g. +1 613 515 0123", text: $phoneNumber)
+                    
+                    Spacer()
+                    
+                    Button {
+                        phoneNumber = ""
+                    } label: {
+                        Image(systemName: "multiply.circle.fill")
+                            .frame(width: 24, height: 24)
+                            .tint(Color("systemIcons"))
+                    }
+
+                }
+                .padding(16)
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            Button {
+                currentStep = .verification
+            } label: {
+                Text("Next")
+            }
+            .buttonStyle(StartButtonStyle())
+            .padding(.bottom, 77)
+        }
     }
 }
 
 struct PhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        PhoneNumberView()
+        PhoneNumberView(currentStep: .constant(.verification))
     }
 }

@@ -8,13 +8,68 @@
 import SwiftUI
 
 struct AuthView: View {
+    
+    @Binding var currentStep: Onboarding
+    
+    @State private var authCode = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            VStack {
+                
+                Text("Verification")
+                    .font(.verificationTitle)
+                    .padding(.top, 40)
+                
+                Text("We sent a 6-digit verification code to your device.")
+                    .font(.verificationDesc_numberPlaceHolder)
+                    .padding(.top, 24)
+                    .padding(.horizontal, 39)
+                    .padding(.bottom, 34)
+            }
+            .foregroundColor(Color("secondaryText"))
+            .multilineTextAlignment(.center)
+            
+            ZStack {
+                
+                Rectangle()
+                    .frame(height: 56)
+                    .foregroundColor(Color("TextField"))
+                
+                HStack {
+                    TextField("e.g. +1 613 515 0123", text: $authCode)
+                    
+                    Spacer()
+                    
+                    Button {
+                        authCode = ""
+                    } label: {
+                        Image(systemName: "multiply.circle.fill")
+                            .frame(width: 24, height: 24)
+                            .tint(Color("systemIcons"))
+                    }
+
+                }
+                .padding(16)
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            Button {
+                currentStep = .profile
+            } label: {
+                Text("Next")
+            }
+            .buttonStyle(StartButtonStyle())
+            .padding(.bottom, 77)
+        }
     }
 }
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        AuthView(currentStep: .constant(.verification))
     }
 }

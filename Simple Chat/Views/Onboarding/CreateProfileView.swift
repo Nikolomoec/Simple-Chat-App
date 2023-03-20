@@ -8,13 +8,82 @@
 import SwiftUI
 
 struct CreateProfileView: View {
+    
+    @Binding var currentStep: Onboarding
+    
+    @State private var name = ""
+    @State private var lastName = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            VStack {
+                
+                Text("Setup your Profile")
+                    .font(.verificationTitle)
+                    .padding(.top, 40)
+                
+                Text("Just a few more detailes to get started")
+                    .font(.verificationDesc_numberPlaceHolder)
+                    .padding(.top, 24)
+                    .padding(.horizontal, 39)
+                    .padding(.bottom, 34)
+            }
+            .foregroundColor(Color("secondaryText"))
+            .multilineTextAlignment(.center)
+            
+            Spacer()
+            
+            // Profile Image
+            ZStack {
+                Circle()
+                    .foregroundColor(Color("TextField"))
+                Circle()
+                    .stroke(Color("profileBorder"), lineWidth: 2)
+                
+                Image(systemName: "camera.fill")
+                
+            }
+            .frame(width: 134, height: 134)
+            
+            Spacer()
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(Color("TextField"))
+                    .frame(height: 46)
+                TextField("Given Name", text: $name)
+                    .font(.verificationDesc_numberPlaceHolder)
+                    .padding()
+            }
+            .padding(.horizontal)
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(Color("TextField"))
+                    .frame(height: 46)
+                TextField("Last Name", text: $lastName)
+                    .font(.verificationDesc_numberPlaceHolder)
+                    .padding()
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            Button {
+                currentStep = .contacts
+            } label: {
+                Text("Next")
+            }
+            .buttonStyle(StartButtonStyle())
+            .padding(.bottom, 77)
+        }
+        
     }
 }
 
 struct CreateProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateProfileView()
+        CreateProfileView(currentStep: .constant(.profile))
     }
 }
