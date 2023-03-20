@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088629C8D491008BEEC9 /* textFieldStyle.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A04088629C8D491008BEEC9 /* textFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldStyle.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				5A31629A29C6324700BA6E4D /* Fonts.swift */,
 				5A89236629C8C2080008DEE9 /* ButtonStyle.swift */,
+				5A04088629C8D491008BEEC9 /* textFieldStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				5A89236529C881780008DEE9 /* SyncContactsView.swift in Sources */,
 				5A89235529C84D220008DEE9 /* AppDelegate.swift in Sources */,
 				5A89235B29C87E960008DEE9 /* OnboardingContainerView.swift in Sources */,
+				5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */,
 				5A31628429C6252D00BA6E4D /* RootView.swift in Sources */,
 				5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,

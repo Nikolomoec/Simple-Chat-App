@@ -48,25 +48,11 @@ struct CreateProfileView: View {
             
             Spacer()
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color("TextField"))
-                    .frame(height: 46)
-                TextField("Given Name", text: $name)
-                    .font(.verificationDesc_numberPlaceHolder)
-                    .padding()
-            }
-            .padding(.horizontal)
+            TextField("Given Name", text: $name)
+                .textFieldStyle(CustomTextFieldStyle())
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color("TextField"))
-                    .frame(height: 46)
-                TextField("Last Name", text: $lastName)
-                    .font(.verificationDesc_numberPlaceHolder)
-                    .padding()
-            }
-            .padding(.horizontal)
+            TextField("Last Name", text: $lastName)
+                .textFieldStyle(CustomTextFieldStyle())
             
             Spacer()
             

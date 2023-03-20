@@ -36,7 +36,7 @@ struct WelcomeView: View {
             Button {
                 currentStep = .phone
             } label: {
-                Text("Continue")
+                Text("Get Started")
             }
             .buttonStyle(StartButtonStyle())
             .padding(.bottom, 5)

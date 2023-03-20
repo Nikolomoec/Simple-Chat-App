@@ -26,7 +26,7 @@ struct RootView: View {
         .fullScreenCover(isPresented: $isOnboarding) {
             
         } content: {
-            OnboardingContainerView()
+            OnboardingContainerView(isOnboarding: $isOnboarding)
         }
 
     }
