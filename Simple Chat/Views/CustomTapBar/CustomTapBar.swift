@@ -28,7 +28,7 @@ struct CustomTapBar: View {
             }
             
             Button {
-                
+                AuthViewModel.logout()
             } label: {
                     
                     VStack(alignment: .center, spacing: 4) {

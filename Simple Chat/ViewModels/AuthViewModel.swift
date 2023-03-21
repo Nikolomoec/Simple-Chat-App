@@ -21,4 +21,34 @@ class AuthViewModel {
     static func logout() {
         try? Auth.auth().signOut()
     }
+    
+    static func sendPhoneNumber(phone: String, completion: @escaping (Error?) -> Void) {
+        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { verificationID, error in
+            if error == nil {
+                // Got the verificationID
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+            }
+            DispatchQueue.main.async {
+                // Notify the UI
+                completion(error)
+            }
+        }
+    }
+    static func verifyCode(code: String, completion: @escaping (Error?) -> Void) {
+        // Get the verificationID from userDefaults
+        let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") ?? ""
+        
+        // Send the verID and user code to firebase
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
+        
+        // Sign in the user
+        Auth.auth().signIn(with: credential) { authResult, error in
+            
+            DispatchQueue.main.async {
+                // Notify the UI
+                // Always update UI on the main thread
+                completion(error)
+            }
+        }
+    }
 }

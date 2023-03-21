@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AuthView: View {
     
@@ -38,7 +39,11 @@ struct AuthView: View {
                     .foregroundColor(Color("TextField"))
                 
                 HStack {
-                    TextField("e.g. +1 613 515 0123", text: $authCode)
+                    TextField("", text: $authCode)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(authCode)) { _ in
+                            TextHelper.limitText(&authCode, 6)
+                        }
                     
                     Spacer()
                     
@@ -58,7 +63,15 @@ struct AuthView: View {
             Spacer()
             
             Button {
-                currentStep = .profile
+                // Send the verification code to Firebase
+                AuthViewModel.verifyCode(code: authCode) { error in
+                    if error == nil {
+                        // Move to the next step
+                        currentStep = .profile
+                    } else {
+                        // Display an error
+                    }
+                }
             } label: {
                 Text("Next")
             }
