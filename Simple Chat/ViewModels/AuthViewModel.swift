@@ -22,6 +22,12 @@ class AuthViewModel {
         try? Auth.auth().signOut()
     }
     
+    static func getLoggedinUserPhone() -> String {
+    
+        return Auth.auth().currentUser?.phoneNumber ?? ""
+        
+    }
+    
     static func sendPhoneNumber(phone: String, completion: @escaping (Error?) -> Void) {
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { verificationID, error in
             if error == nil {

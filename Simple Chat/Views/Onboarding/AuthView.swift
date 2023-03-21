@@ -11,6 +11,7 @@ import Combine
 struct AuthView: View {
     
     @Binding var currentStep: Onboarding
+    @Binding var isOnboarding: Bool
     
     @State private var authCode = ""
     
@@ -66,8 +67,16 @@ struct AuthView: View {
                 // Send the verification code to Firebase
                 AuthViewModel.verifyCode(code: authCode) { error in
                     if error == nil {
-                        // Move to the next step
-                        currentStep = .profile
+                        
+                        // Check if user have profile
+                        DatabaseService().checkUserProfile { exists in
+                            if exists {
+                                isOnboarding = false
+                            } else {
+                                // Move to the next step
+                                currentStep = .profile
+                            }
+                        }
                     } else {
                         // Display an error
                     }
@@ -83,6 +92,6 @@ struct AuthView: View {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView(currentStep: .constant(.verification))
+        AuthView(currentStep: .constant(.verification), isOnboarding: .constant(true))
     }
 }

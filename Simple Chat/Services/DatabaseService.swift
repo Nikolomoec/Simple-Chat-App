@@ -60,13 +60,18 @@ class DatabaseService {
     
     func setUserProfile(firstName: String, lastName: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
         
+        // Insure that user is logged in
+        guard AuthViewModel.isUserLoggedIn() != false else { return }
+        
+        let userPhone = TextHelper.cleanPhoneNumber(AuthViewModel.getLoggedinUserPhone())
         // Reference to the Firestore
         let db = Firestore.firestore()
         
         // Set the profile data
-        let doc = db.collection("user").document()
-        doc.setData(["firstName":firstName,
-                     "lastName":lastName])
+        let doc = db.collection("user").document(AuthViewModel.getLoggedInUserId())
+        doc.setData(["firstName" : firstName,
+                     "lastName"  : lastName,
+                     "phone"     : userPhone])
         // Check if image is not nil
         
         if let image = image {
@@ -104,5 +109,24 @@ class DatabaseService {
                 }
             }
         }
+    }
+    
+    func checkUserProfile(completion: @escaping (Bool) -> Void) {
+     
+        guard AuthViewModel.isUserLoggedIn() != false else { return }
+        
+        // Create firebase ref
+        let db = Firestore.firestore()
+        db.collection("users").document(AuthViewModel.getLoggedInUserId())
+            .getDocument { snapshot, error in
+                if snapshot != nil && error == nil {
+                    
+                    // Notify that profile exists
+                    completion(snapshot!.exists)
+                } else {
+                    completion(false)
+                }
+            }
+        
     }
 }
