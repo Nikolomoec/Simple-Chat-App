@@ -15,6 +15,7 @@ struct Simple_ChatApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environmentObject(ContactsViewModel())
         }
     }
 }

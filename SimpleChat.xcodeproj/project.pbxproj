@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088629C8D491008BEEC9 /* textFieldStyle.swift */; };
+		5A04088929C8DB2D008BEEC9 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088829C8DB2D008BEEC9 /* ContactsViewModel.swift */; };
+		5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088A29C99064008BEEC9 /* UserModel.swift */; };
+		5A04088D29C991D2008BEEC9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088C29C991D2008BEEC9 /* DatabaseService.swift */; };
+		5A04088F29C99510008BEEC9 /* TextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088E29C99510008BEEC9 /* TextHelper.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 
 /* Begin PBXFileReference section */
 		5A04088629C8D491008BEEC9 /* textFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldStyle.swift; sourceTree = "<group>"; };
+		5A04088829C8DB2D008BEEC9 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		5A04088A29C99064008BEEC9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5A04088C29C991D2008BEEC9 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		5A04088E29C99510008BEEC9 /* TextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHelper.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -99,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				5A89235629C856FC0008DEE9 /* Simple Chat.entitlements */,
-				5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */,
 				5A89235429C84D220008DEE9 /* AppDelegate.swift */,
+				5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */,
 				5A31628F29C627EC00BA6E4D /* Views */,
 				5A31629029C627F600BA6E4D /* ViewModels */,
 				5A31629129C6280100BA6E4D /* Models */,
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				5A89235729C87B420008DEE9 /* AuthViewModel.swift */,
+				5A04088829C8DB2D008BEEC9 /* ContactsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 		5A31629129C6280100BA6E4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5A04088A29C99064008BEEC9 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +160,7 @@
 		5A31629229C6280500BA6E4D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5A04088C29C991D2008BEEC9 /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -160,6 +171,7 @@
 				5A31629A29C6324700BA6E4D /* Fonts.swift */,
 				5A89236629C8C2080008DEE9 /* ButtonStyle.swift */,
 				5A04088629C8D491008BEEC9 /* textFieldStyle.swift */,
+				5A04088E29C99510008BEEC9 /* TextHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -282,19 +294,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A04088D29C991D2008BEEC9 /* DatabaseService.swift in Sources */,
 				5A89236529C881780008DEE9 /* SyncContactsView.swift in Sources */,
 				5A89235529C84D220008DEE9 /* AppDelegate.swift in Sources */,
 				5A89235B29C87E960008DEE9 /* OnboardingContainerView.swift in Sources */,
+				5A04088F29C99510008BEEC9 /* TextHelper.swift in Sources */,
 				5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */,
 				5A31628429C6252D00BA6E4D /* RootView.swift in Sources */,
 				5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,
 				5A89235829C87B420008DEE9 /* AuthViewModel.swift in Sources */,
+				5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */,
 				5A89236329C881670008DEE9 /* CreateProfileView.swift in Sources */,
 				5A89235F29C881480008DEE9 /* PhoneNumberView.swift in Sources */,
 				5A3162A029C6399500BA6E4D /* CustomTapBar.swift in Sources */,
 				5A3162A429C835A500BA6E4D /* TabBarButton.swift in Sources */,
 				5A89236129C881500008DEE9 /* AuthView.swift in Sources */,
+				5A04088929C8DB2D008BEEC9 /* ContactsViewModel.swift in Sources */,
 				5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */,
 				5A89236729C8C2080008DEE9 /* ButtonStyle.swift in Sources */,
 			);
@@ -431,6 +447,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Simple-Chat-Info.plist";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This will only allow the app to sync your saved contacts to the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,6 +481,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Simple-Chat-Info.plist";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This will only allow the app to sync your saved contacts to the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
