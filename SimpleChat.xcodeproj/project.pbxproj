@@ -13,6 +13,8 @@
 		5A04088D29C991D2008BEEC9 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088C29C991D2008BEEC9 /* DatabaseService.swift */; };
 		5A04088F29C99510008BEEC9 /* TextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04088E29C99510008BEEC9 /* TextHelper.swift */; };
 		5A04089129C9A355008BEEC9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089029C9A355008BEEC9 /* ImagePicker.swift */; };
+		5A04089529CA3B39008BEEC9 /* ContactsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089429CA3B39008BEEC9 /* ContactsListView.swift */; };
+		5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		5A04088C29C991D2008BEEC9 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		5A04088E29C99510008BEEC9 /* TextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHelper.swift; sourceTree = "<group>"; };
 		5A04089029C9A355008BEEC9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5A04089429CA3B39008BEEC9 /* ContactsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListView.swift; sourceTree = "<group>"; };
+		5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListView.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A04089229CA3B0A008BEEC9 /* ContactsView */ = {
+			isa = PBXGroup;
+			children = (
+				5A04089429CA3B39008BEEC9 /* ContactsListView.swift */,
+			);
+			path = ContactsView;
+			sourceTree = "<group>";
+		};
+		5A04089329CA3B15008BEEC9 /* ChatsView */ = {
+			isa = PBXGroup;
+			children = (
+				5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */,
+			);
+			path = ChatsView;
+			sourceTree = "<group>";
+		};
 		5A31627529C6252D00BA6E4D = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				5A31628329C6252D00BA6E4D /* RootView.swift */,
+				5A04089329CA3B15008BEEC9 /* ChatsView */,
+				5A04089229CA3B0A008BEEC9 /* ContactsView */,
 				5A89235929C87E7A0008DEE9 /* Onboarding */,
 				5A31629C29C6395C00BA6E4D /* CustomTapBar */,
 			);
@@ -305,6 +327,7 @@
 				5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */,
 				5A31628429C6252D00BA6E4D /* RootView.swift in Sources */,
 				5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */,
+				5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,
 				5A89235829C87B420008DEE9 /* AuthViewModel.swift in Sources */,
 				5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */,
@@ -313,6 +336,7 @@
 				5A3162A029C6399500BA6E4D /* CustomTapBar.swift in Sources */,
 				5A3162A429C835A500BA6E4D /* TabBarButton.swift in Sources */,
 				5A89236129C881500008DEE9 /* AuthView.swift in Sources */,
+				5A04089529CA3B39008BEEC9 /* ContactsListView.swift in Sources */,
 				5A04088929C8DB2D008BEEC9 /* ContactsViewModel.swift in Sources */,
 				5A04089129C9A355008BEEC9 /* ImagePicker.swift in Sources */,
 				5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */,

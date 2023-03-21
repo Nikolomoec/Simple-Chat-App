@@ -14,14 +14,23 @@ struct RootView: View {
     @State var isOnboarding = !AuthViewModel.isUserLoggedIn()
     
     var body: some View {
-        VStack {
-            
-            Text("Hello, world!")
-            
-            Spacer()
-            
-            CustomTapBar(selectedTab: $selectedTab)
-            
+        ZStack {
+            Color("backgroundScreen")
+                .ignoresSafeArea()
+            VStack {
+                
+                switch selectedTab {
+                case .chats:
+                    ChatsListView()
+                case .contacts:
+                    ContactsListView()
+                }
+                
+                Spacer()
+                
+                CustomTapBar(selectedTab: $selectedTab)
+                
+            }
         }
         .fullScreenCover(isPresented: $isOnboarding) {
             

@@ -11,8 +11,6 @@ struct SyncContactsView: View {
     
     @Binding var isOnboarding: Bool
     
-    @EnvironmentObject var contactsModel: ContactsViewModel
-    
     var body: some View {
         VStack {
             
@@ -42,9 +40,6 @@ struct SyncContactsView: View {
             }
             .buttonStyle(StartButtonStyle())
             .padding(.bottom, 77)
-        }
-        .onAppear {
-            contactsModel.getLocalContacts()
         }
     }
 }

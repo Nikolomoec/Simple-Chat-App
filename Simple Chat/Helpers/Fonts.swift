@@ -38,7 +38,7 @@ extension Font {
     }
     
     public static var noChats_noContactsTitle: Font {
-        return Font.custom("LexendDeca-SemiBold", size: 22)
+        return Font.custom("LexendDeca-SemiBold", size: 27)
     }
     
     public static var noChats_noContactsDesc: Font {
