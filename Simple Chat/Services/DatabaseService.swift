@@ -8,6 +8,8 @@
 import Foundation
 import Contacts
 import Firebase
+import FirebaseStorage
+import UIKit
 
 class DatabaseService {
     
@@ -56,4 +58,51 @@ class DatabaseService {
         }
     }
     
+    func setUserProfile(firstName: String, lastName: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
+        
+        // Reference to the Firestore
+        let db = Firestore.firestore()
+        
+        // Set the profile data
+        let doc = db.collection("user").document()
+        doc.setData(["firstName":firstName,
+                     "lastName":lastName])
+        // Check if image is not nil
+        
+        if let image = image {
+            
+            // Create storage references
+            let storageRef = Storage.storage().reference()
+            
+            // Turn our image into data
+            let imageData = image.jpegData(compressionQuality: 0.8)
+            
+            // Check if we are able to convert it into data
+            guard imageData != nil else { return }
+            
+            // Specify file path and name
+            let path = "images/\(UUID().uuidString).jpg"
+            let fileRef = storageRef.child(path)
+            
+            let uploadTask = fileRef.putData(imageData!) { meta, error in
+                if error == nil && meta != nil {
+                    
+                    // Set the image data to profile
+                    
+                    // We are using "merge: true" bc we want it
+                    // to update the user profile not to override it
+                    
+                    doc.setData(["photo": path], merge: true) { error in
+                        if error == nil {
+                            // Sucsess, notify user
+                            completion(true)
+                        }
+                    }
+                    
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
 }
