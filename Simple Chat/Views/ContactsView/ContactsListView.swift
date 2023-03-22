@@ -11,6 +11,8 @@ struct ContactsListView: View {
     
     @State private var search = ""
     
+    @Binding var isChatShowing: Bool
+    
     @EnvironmentObject var contactsModel: ContactsViewModel
     
     var body: some View {
@@ -51,9 +53,16 @@ struct ContactsListView: View {
             if contactsModel.filterUsers.count > 0 {
                 // List
                 List(contactsModel.filterUsers) { user in
-                    ContactRow(user: user)
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                    Button {
+                        // Display ConverstionView
+                        isChatShowing = true
+                        
+                    } label: {
+                        ContactRow(user: user)
+                    }
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .buttonStyle(.plain)
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 10)
@@ -93,7 +102,7 @@ struct ContactsListView: View {
 
 struct ContactsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactsListView()
+        ContactsListView(isChatShowing: .constant(true))
             .environmentObject(ContactsViewModel())
     }
 }

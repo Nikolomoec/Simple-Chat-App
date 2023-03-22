@@ -16,6 +16,8 @@
 		5A04089529CA3B39008BEEC9 /* ContactsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089429CA3B39008BEEC9 /* ContactsListView.swift */; };
 		5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */; };
 		5A04089929CAECC4008BEEC9 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089829CAECC4008BEEC9 /* ContactRow.swift */; };
+		5A04089B29CB0C1A008BEEC9 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */; };
+		5A04089E29CB2E3B008BEEC9 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		5A04089429CA3B39008BEEC9 /* ContactsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListView.swift; sourceTree = "<group>"; };
 		5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListView.swift; sourceTree = "<group>"; };
 		5A04089829CAECC4008BEEC9 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
+		5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -108,8 +112,17 @@
 			isa = PBXGroup;
 			children = (
 				5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */,
+				5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */,
 			);
 			path = ChatsView;
+			sourceTree = "<group>";
+		};
+		5A04089C29CB2E20008BEEC9 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		5A31627529C6252D00BA6E4D = {
@@ -161,6 +174,7 @@
 				5A31628329C6252D00BA6E4D /* RootView.swift */,
 				5A04089329CA3B15008BEEC9 /* ChatsView */,
 				5A04089229CA3B0A008BEEC9 /* ContactsView */,
+				5A04089C29CB2E20008BEEC9 /* Misc */,
 				5A89235929C87E7A0008DEE9 /* Onboarding */,
 				5A31629C29C6395C00BA6E4D /* CustomTapBar */,
 			);
@@ -344,7 +358,9 @@
 				5A04088929C8DB2D008BEEC9 /* ContactsViewModel.swift in Sources */,
 				5A04089129C9A355008BEEC9 /* ImagePicker.swift in Sources */,
 				5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */,
+				5A04089E29CB2E3B008BEEC9 /* ProfileImageView.swift in Sources */,
 				5A89236729C8C2080008DEE9 /* ButtonStyle.swift in Sources */,
+				5A04089B29CB0C1A008BEEC9 /* ConversationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

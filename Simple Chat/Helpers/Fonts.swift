@@ -76,4 +76,8 @@ extension Font {
     public static var tapBar: Font {
         return Font.custom("LexendDeca-Bold", size: 12)
     }
+    
+    public static var chatTextField: Font {
+        return Font.custom("LexendDeca-SemiBold", size: 20)
+    }
 }
