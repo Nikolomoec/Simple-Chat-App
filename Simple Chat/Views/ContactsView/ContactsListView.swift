@@ -44,11 +44,16 @@ struct ContactsListView: View {
                     .padding(.leading)
             }
             .padding(.horizontal, 35)
+            .onChange(of: search) { _ in
+                contactsModel.filterContacts(filterBy: search.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+            }
             
-            if contactsModel.users.count > 0 {
+            if contactsModel.filterUsers.count > 0 {
                 // List
-                List(contactsModel.users) { user in
-                    
+                List(contactsModel.filterUsers) { user in
+                    ContactRow(user: user)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 10)
@@ -73,6 +78,8 @@ struct ContactsListView: View {
                     .foregroundColor(Color("secondaryText"))
                     .multilineTextAlignment(.center)
                 }
+                .padding()
+                
                 
                 Spacer()
                 

@@ -47,6 +47,5 @@ struct SyncContactsView: View {
 struct SyncContactsView_Previews: PreviewProvider {
     static var previews: some View {
         SyncContactsView(isOnboarding: .constant(true))
-            .environmentObject(ContactsViewModel())
     }
 }

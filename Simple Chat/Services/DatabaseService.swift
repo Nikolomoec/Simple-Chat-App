@@ -13,7 +13,7 @@ import UIKit
 
 class DatabaseService {
     
-    func getPlatformUsers(localContacts: [CNContact], completion: @escaping([User]) -> Void) {
+    func getPlatformUsers(localContacts: [CNContact], completion: @escaping ([User]) -> Void) {
         var platformUsers = [User]()
         
         // Transform whole contacts to just phoneNumber strings
@@ -40,7 +40,7 @@ class DatabaseService {
             phoneNumbers = Array(phoneNumbers.dropFirst(10))
             
             // Lookup the first 10
-            let query = db.collection("users").whereField("phone", in: tenPhoneNumbers)
+            let query = db.collection("user").whereField("phone", in: tenPhoneNumbers)
             
             query.getDocuments { snapshot, error in
                 if error == nil && snapshot != nil {
@@ -92,15 +92,23 @@ class DatabaseService {
             let uploadTask = fileRef.putData(imageData!) { meta, error in
                 if error == nil && meta != nil {
                     
-                    // Set the image data to profile
-                    
-                    // We are using "merge: true" bc we want it
-                    // to update the user profile not to override it
-                    
-                    doc.setData(["photo": path], merge: true) { error in
-                        if error == nil {
-                            // Sucsess, notify user
-                            completion(true)
+                    // Get full Url to image
+                    fileRef.downloadURL { url, error in
+                        
+                        if url != nil && error == nil {
+                            // Set the image data to profile
+                            
+                            // We are using "merge: true" bc we want it
+                            // to update the user profile not to override it
+                            doc.setData(["photo": url!.absoluteString], merge: true) { error in
+                                if error == nil {
+                                    // Sucsess, notify user
+                                    completion(true)
+                                }
+                            }
+                        } else {
+                            // Not sucscess to getting url
+                            completion(false)
                         }
                     }
                     
@@ -108,6 +116,9 @@ class DatabaseService {
                     completion(false)
                 }
             }
+        } else {
+            // No image is set
+            completion(true)
         }
     }
     
