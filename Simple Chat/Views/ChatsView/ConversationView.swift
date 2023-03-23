@@ -48,7 +48,46 @@ struct ConversationView: View {
             }
             // Chat
             ScrollView {
-                
+                VStack(spacing: 24) {
+                    // Their message
+                    HStack {
+                        
+                        Text("Lorem ipsum dolor sit amet consectetur. Parturient egestas vel...")
+                            .font(.message)
+                            .foregroundColor(.black)
+                            .padding(.vertical, 16)
+                            .padding(.horizontal, 24)
+                            .background(Color("searchBar"))
+                        
+                        Spacer()
+                        
+                        Text("9:41")
+                            .font(.chatDate_Time)
+                            .padding(.leading)
+                    }
+                    .padding(.horizontal)
+                    
+                    // Your message
+                    HStack {
+                        
+                        Text("9:41")
+                            .font(.chatDate_Time)
+                            .padding(.trailing)
+                        
+                        Spacer()
+                        
+                        Text("Lorem ipsum dolor sit amet consectetur. Parturient egestas velhgjg hgjgjhj jhjgjgjg...")
+                            .font(.message)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 16)
+                            .padding(.horizontal, 24)
+                            .background(Color("textBubble"))
+
+                    }
+                    .padding(.horizontal)
+                    
+                }
+                .padding(.top)
             }
             // Message bar
             ZStack {
@@ -77,6 +116,22 @@ struct ConversationView: View {
                             .padding(10)
                             .padding(.leading, 7)
                             .font(.chatTextField)
+                        HStack {
+                            Spacer()
+                            
+                            Button {
+                                // Emoji picker
+                                
+                            } label: {
+                                Image(systemName: "face.smiling")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(Color("systemIcons"))
+                            }
+                            .padding(.trailing, 12)
+                        }
+
                     }
                     .padding(.horizontal, 13.5)
                     

@@ -50,7 +50,7 @@ extension Font {
     }
     
     public static var message: Font {
-        return Font.custom("LexendDeca-SemiBold", size: 14)
+        return Font.custom("LexendDeca-SemiBold", size: 15)
     }
     
     public static var chat_contactsTitle: Font {
@@ -62,7 +62,7 @@ extension Font {
     }
     
     public static var chatDate_Time: Font {
-        return Font.custom("LexendDeca-Bold", size: 10)
+        return Font.custom("LexendDeca-Bold", size: 14)
     }
     
     public static var nameMessage: Font {
