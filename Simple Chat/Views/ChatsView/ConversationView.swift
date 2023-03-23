@@ -58,6 +58,7 @@ struct ConversationView: View {
                             .padding(.vertical, 16)
                             .padding(.horizontal, 24)
                             .background(Color("searchBar"))
+                            .cornerRadius(30, corners: [.bottomRight,.topLeft,.topRight])
                         
                         Spacer()
                         
@@ -82,6 +83,7 @@ struct ConversationView: View {
                             .padding(.vertical, 16)
                             .padding(.horizontal, 24)
                             .background(Color("textBubble"))
+                            .cornerRadius(30, corners: [.bottomLeft,.topLeft,.topRight])
 
                     }
                     .padding(.horizontal)
