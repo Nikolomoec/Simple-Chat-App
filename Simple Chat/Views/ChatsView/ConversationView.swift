@@ -65,45 +65,53 @@ struct ConversationView: View {
                 .padding(.leading, 16)
             }
             // Chat
-            ScrollView {
-                VStack(spacing: 24) {
-                    
-                    ForEach(chatModel.messages) { msg in
-                        // Dynamic Message
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: 24) {
                         
-                        let isFromUser = msg.senderId == AuthViewModel.getLoggedInUserId()
-                        
-                        HStack {
+                        ForEach (Array(chatModel.messages.enumerated()), id: \.element) { index, msg in
+                            // Dynamic Message
                             
-                            if isFromUser {
+                            let isFromUser = msg.senderId == AuthViewModel.getLoggedInUserId()
+                            
+                            HStack {
                                 
-                                Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
-                                    .font(.chatDate_Time)
-                                    .padding(.trailing)
+                                if isFromUser {
+                                    
+                                    Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
+                                        .font(.chatDate_Time)
+                                        .padding(.trailing)
+                                    
+                                    Spacer()
+                                }
                                 
-                                Spacer()
+                                Text(msg.msg)
+                                    .font(.message)
+                                    .foregroundColor(isFromUser ? .white : .black)
+                                    .padding(.vertical, 16)
+                                    .padding(.horizontal, 24)
+                                    .background(isFromUser ? Color("textBubble") : Color("searchBar"))
+                                    .cornerRadius(30, corners: isFromUser ? [.bottomLeft,.topLeft,.topRight] : [.bottomRight,.topLeft,.topRight])
+                                
+                                if !isFromUser {
+                                    Spacer()
+                                    
+                                    Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
+                                        .font(.chatDate_Time)
+                                        .padding(.trailing)
+                                }
                             }
-                            
-                            Text(msg.msg)
-                                .font(.message)
-                                .foregroundColor(isFromUser ? .white : .black)
-                                .padding(.vertical, 16)
-                                .padding(.horizontal, 24)
-                                .background(isFromUser ? Color("textBubble") : Color("searchBar"))
-                                .cornerRadius(30, corners: isFromUser ? [.bottomLeft,.topLeft,.topRight] : [.bottomRight,.topLeft,.topRight])
-                            
-                            if !isFromUser {
-                                Spacer()
-                                
-                                Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
-                                    .font(.chatDate_Time)
-                                    .padding(.trailing)
-                            }
+                            .padding(.horizontal)
+                            .id(index)
                         }
-                        .padding(.horizontal)
+                    }
+                    .padding(.top)
+                }
+                .onChange(of: chatModel.messages.count) { newCount in
+                    withAnimation {
+                        proxy.scrollTo(newCount - 1)
                     }
                 }
-                .padding(.top)
             }
             // Message bar
             ZStack {
