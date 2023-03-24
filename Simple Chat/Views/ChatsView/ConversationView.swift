@@ -176,6 +176,7 @@ struct ConversationView: View {
                             .frame(width: 33, height: 33)
                             .foregroundColor(Color("textBubble"))
                     }
+                    .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines) == "")
 
                 }
                 .padding(.horizontal, 30)
