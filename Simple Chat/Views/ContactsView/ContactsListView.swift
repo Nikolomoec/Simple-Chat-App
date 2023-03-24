@@ -14,6 +14,7 @@ struct ContactsListView: View {
     @Binding var isChatShowing: Bool
     
     @EnvironmentObject var contactsModel: ContactsViewModel
+    @EnvironmentObject var chatModel: ChatViewModel
     
     var body: some View {
         VStack {
@@ -54,6 +55,9 @@ struct ContactsListView: View {
                 // List
                 List(contactsModel.filterUsers) { user in
                     Button {
+                        // Search an existing convo with this user
+                        chatModel.getChatFor(contact: user)
+                        
                         // Display ConverstionView
                         isChatShowing = true
                         
@@ -104,5 +108,6 @@ struct ContactsListView_Previews: PreviewProvider {
     static var previews: some View {
         ContactsListView(isChatShowing: .constant(true))
             .environmentObject(ContactsViewModel())
+            .environmentObject(ChatViewModel())
     }
 }

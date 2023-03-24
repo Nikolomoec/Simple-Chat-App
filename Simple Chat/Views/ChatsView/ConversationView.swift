@@ -43,6 +43,7 @@ struct ConversationView: View {
                             
                             let participant = participants.first
                             
+                            // Title Name
                             Text("\(participant?.firstName ?? "") \(participant?.lastName ?? "")")
                                 .font(.nameTitle)
                                 .padding(.top, 10)
@@ -55,6 +56,7 @@ struct ConversationView: View {
                         
                         let participant = participants.first
                         
+                        // Title profile image
                         ProfileImageView(user: participant!)
                         
                     }
@@ -176,7 +178,7 @@ struct ConversationView: View {
             chatModel.getMessages()
             
             // Try to get other participants as User instances
-            let ids = ChatViewModel().getParticipantIds()
+            let ids = chatModel.getParticipantIds()
             self.participants = contactModel.getParticipants(ids: ids)
         }
     }
