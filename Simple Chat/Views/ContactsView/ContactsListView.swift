@@ -92,6 +92,7 @@ struct ContactsListView: View {
                     .multilineTextAlignment(.center)
                 }
                 .padding()
+                .padding(.bottom, 90)
                 
                 
                 Spacer()

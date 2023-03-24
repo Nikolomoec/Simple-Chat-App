@@ -233,7 +233,12 @@ class DatabaseService {
                                 "msg"      : msg,
                                 "senderId" : AuthViewModel.getLoggedInUserId(),
                                 "timestamp": Date()])
-        
+        // Update chat document
+        db.collection("chats")
+            .document(chat.id!)
+            .setData(["updated" : Date(),
+                      "lastmsg" : msg],
+                     merge: true)
     }
     
     func createChat(chat: Chat, comletion: @escaping (String) -> Void) {

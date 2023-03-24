@@ -48,6 +48,7 @@
 		5A89236329C881670008DEE9 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89236229C881670008DEE9 /* CreateProfileView.swift */; };
 		5A89236529C881780008DEE9 /* SyncContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89236429C881780008DEE9 /* SyncContactsView.swift */; };
 		5A89236729C8C2080008DEE9 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89236629C8C2080008DEE9 /* ButtonStyle.swift */; };
+		5AB1076B29CDF4C7001BE832 /* ChatListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1076A29CDF4C7001BE832 /* ChatListRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		5A89236229C881670008DEE9 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 		5A89236429C881780008DEE9 /* SyncContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncContactsView.swift; sourceTree = "<group>"; };
 		5A89236629C8C2080008DEE9 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		5AB1076A29CDF4C7001BE832 /* ChatListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				5A04089629CA3B4A008BEEC9 /* ChatsListView.swift */,
 				5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */,
+				5AB1076A29CDF4C7001BE832 /* ChatListRow.swift */,
 			);
 			path = ChatsView;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */,
 				5A0408A229CD779C008BEEC9 /* ChatModel.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,
+				5AB1076B29CDF4C7001BE832 /* ChatListRow.swift in Sources */,
 				5A89235829C87B420008DEE9 /* AuthViewModel.swift in Sources */,
 				5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */,
 				5A89236329C881670008DEE9 /* CreateProfileView.swift in Sources */,

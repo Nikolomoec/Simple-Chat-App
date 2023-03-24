@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     
-    @State var selectedTab: Tabs = .chats
+    @State var selectedTab: Tabs = .contacts
     
     @State var isOnboarding = !AuthViewModel.isUserLoggedIn()
     
