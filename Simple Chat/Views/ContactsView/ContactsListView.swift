@@ -99,9 +99,6 @@ struct ContactsListView: View {
                 
             }
         }
-        .onAppear {
-            contactsModel.getLocalContacts()
-        }
     }
 }
 

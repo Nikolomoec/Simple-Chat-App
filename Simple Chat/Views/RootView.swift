@@ -18,6 +18,7 @@ struct RootView: View {
     
     @State var isChatShowing = false
     
+    @EnvironmentObject var contactsModel: ContactsViewModel
     @EnvironmentObject var chatModel: ChatViewModel
     
     var body: some View {
@@ -37,6 +38,12 @@ struct RootView: View {
                 
                 CustomTapBar(selectedTab: $selectedTab)
                 
+            }
+        }
+        .onAppear {
+            if !isOnboarding {
+                // User has already onboarded, load contacts
+                contactsModel.getLocalContacts()
             }
         }
         .fullScreenCover(isPresented: $isOnboarding) {
@@ -60,5 +67,6 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
             .environmentObject(ChatViewModel())
+            .environmentObject(ContactsViewModel())
     }
 }

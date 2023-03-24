@@ -24,28 +24,42 @@ struct ProfileImageView: View {
                         .bold()
                 }
             } else {
-                // Create url from user photo url
-                let photoUrl = URL(string: user.photo ?? "")
-                
-                AsyncImage(url: photoUrl) { phase in
-                    switch phase {
-                    case .empty:
-                        // Progress View bc it fetching
-                        ProgressView()
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    case .failure:
-                        ZStack {
-                            Circle()
-                                .foregroundColor(.white)
-                            Text(user.firstName?.prefix(1) ?? "")
-                                .bold()
+                // Check image cache, if it's exists, use that:
+                if let cachedImage = CacheService.getImage(forKey: user.photo!) {
+                    // Image is in cache, so lets use it
+                    cachedImage
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } else {
+                    // If not in cache do this:
+                    // Create url from user photo url
+                    let photoUrl = URL(string: user.photo ?? "")
+                    
+                    AsyncImage(url: photoUrl) { phase in
+                        switch phase {
+                        case .empty:
+                            // Progress View bc it fetching
+                            ProgressView()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .onAppear {
+                                    // Save this image into cache
+                                    CacheService.setImage(image: image, forKey: user.photo!)
+                                }
+                        case .failure:
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(.white)
+                                Text(user.firstName?.prefix(1) ?? "")
+                                    .bold()
+                            }
                         }
                     }
+                    .clipShape(Circle())
                 }
-                .clipShape(Circle())
             }
             
             Circle()

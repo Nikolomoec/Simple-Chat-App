@@ -49,6 +49,7 @@
 		5A89236529C881780008DEE9 /* SyncContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89236429C881780008DEE9 /* SyncContactsView.swift */; };
 		5A89236729C8C2080008DEE9 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89236629C8C2080008DEE9 /* ButtonStyle.swift */; };
 		5AB1076B29CDF4C7001BE832 /* ChatListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1076A29CDF4C7001BE832 /* ChatListRow.swift */; };
+		5AB1076D29CE3CB0001BE832 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1076C29CE3CB0001BE832 /* CacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		5A89236429C881780008DEE9 /* SyncContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncContactsView.swift; sourceTree = "<group>"; };
 		5A89236629C8C2080008DEE9 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		5AB1076A29CDF4C7001BE832 /* ChatListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListRow.swift; sourceTree = "<group>"; };
+		5AB1076C29CE3CB0001BE832 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				5A04088C29C991D2008BEEC9 /* DatabaseService.swift */,
+				5AB1076C29CE3CB0001BE832 /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */,
 				5A0408A229CD779C008BEEC9 /* ChatModel.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,
+				5AB1076D29CE3CB0001BE832 /* CacheService.swift in Sources */,
 				5AB1076B29CDF4C7001BE832 /* ChatListRow.swift in Sources */,
 				5A89235829C87B420008DEE9 /* AuthViewModel.swift in Sources */,
 				5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */,
