@@ -107,6 +107,9 @@ struct ConversationView: View {
                     }
                     .padding(.top)
                 }
+                .onAppear {
+                    proxy.scrollTo(chatModel.messages.count - 1)
+                }
                 .onChange(of: chatModel.messages.count) { newCount in
                     withAnimation {
                         proxy.scrollTo(newCount - 1)
