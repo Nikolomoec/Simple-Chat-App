@@ -19,6 +19,7 @@
 		5A04089B29CB0C1A008BEEC9 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */; };
 		5A04089E29CB2E3B008BEEC9 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */; };
 		5A0408A029CCF746008BEEC9 /* RoundedCornerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089F29CCF746008BEEC9 /* RoundedCornerExtension.swift */; };
+		5A0408A229CD779C008BEEC9 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0408A129CD779C008BEEC9 /* ChatModel.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		5A04089A29CB0C1A008BEEC9 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		5A04089F29CCF746008BEEC9 /* RoundedCornerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerExtension.swift; sourceTree = "<group>"; };
+		5A0408A129CD779C008BEEC9 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				5A04088A29C99064008BEEC9 /* UserModel.swift */,
+				5A0408A129CD779C008BEEC9 /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				5A31628429C6252D00BA6E4D /* RootView.swift in Sources */,
 				5A31629B29C6324700BA6E4D /* Fonts.swift in Sources */,
 				5A04089729CA3B4A008BEEC9 /* ChatsListView.swift in Sources */,
+				5A0408A229CD779C008BEEC9 /* ChatModel.swift in Sources */,
 				5A89235D29C8813C0008DEE9 /* WelcomeView.swift in Sources */,
 				5A89235829C87B420008DEE9 /* AuthViewModel.swift in Sources */,
 				5A04088B29C99064008BEEC9 /* UserModel.swift in Sources */,
