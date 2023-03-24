@@ -9,6 +9,7 @@ import Foundation
 import Contacts
 import Firebase
 import FirebaseStorage
+import FirebaseFirestoreSwift
 import UIKit
 
 class DatabaseService {
@@ -123,7 +124,7 @@ class DatabaseService {
     }
     
     func checkUserProfile(completion: @escaping (Bool) -> Void) {
-     
+        
         guard AuthViewModel.isUserLoggedIn() != false else { return }
         
         // Create firebase ref
@@ -139,5 +140,79 @@ class DatabaseService {
                 }
             }
         
+    }
+    
+    // MARK: - Chat Methods
+    
+    /// This method returns all chat documents where the logged in user is a participant
+    func getAllchats(completion: @escaping ([Chat]) -> Void) {
+        
+        // Ref ro the database
+        let db = Firestore.firestore()
+        
+        // Perform a chat query against the chat collection where users are participants
+        let chatsQuery = db.collection("chats")
+            .whereField("chats", arrayContains: AuthViewModel.getLoggedInUserId())
+        
+        chatsQuery.getDocuments { snapshot, error in
+            if error == nil && snapshot != nil {
+                
+                var chats = [Chat]()
+                
+                // Loop through all returned chat docs
+                for doc in snapshot!.documents {
+                    
+                    // Parse data inro our chat structures
+                    let chat = try? doc.data(as: Chat.self)
+                    
+                    if let chat = chat {
+                        chats.append(chat)
+                    }
+                }
+                // Return the Data
+                completion(chats)
+            } else {
+                print("Error in database retrival")
+            }
+        }
+    }
+    
+    /// This method returns all messages for a given chat
+    func getAllMessages(chat: Chat, completion: @escaping ([ChatMessage]) -> Void) {
+        
+        // Check if chat id is not nil
+        if let chatId = chat.id {
+            // Get a ref to database
+            let db = Firestore.firestore()
+            
+            // Create the query
+            let msgQuery = db.collection("chats")
+                .document(chatId)
+                .collection("msgs")
+                .order(by: "timestamp")
+            
+            // Perform the query
+            msgQuery.getDocuments { snapshot, error in
+                
+                var messages = [ChatMessage]()
+                
+                if snapshot != nil && error == nil {
+                    for doc in snapshot!.documents {
+                        let message = try? doc.data(as: ChatMessage.self)
+                        
+                        if let message = message {
+                            messages.append(message)
+                        }
+                    }
+                    // Return the results
+                    completion(messages)
+                }
+                else {
+                    print("Error in database retrival")
+                }
+            }
+        } else {
+            completion([ChatMessage]())
+        }
     }
 }

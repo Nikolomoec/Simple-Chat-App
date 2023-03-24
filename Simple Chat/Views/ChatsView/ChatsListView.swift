@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct ChatsListView: View {
+    
+    @EnvironmentObject var chatModel: ChatViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        if chatModel.chats.count > 0 {
+            
+            List(chatModel.chats) { chat in
+                Text(chat.id ?? "chat id is empry")
+            }
+            
+        } else {
+            // No chats
+        }
+        
     }
 }
 
 struct ChatsListView_Previews: PreviewProvider {
     static var previews: some View {
         ChatsListView()
+            .environmentObject(ChatViewModel())
     }
 }
