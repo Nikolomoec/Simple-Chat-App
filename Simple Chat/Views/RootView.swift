@@ -23,7 +23,7 @@ struct RootView: View {
                 
                 switch selectedTab {
                 case .chats:
-                    ChatsListView()
+                    ChatsListView(isChatShowing: $isChatShowing)
                 case .contacts:
                     ContactsListView(isChatShowing: $isChatShowing)
                 }

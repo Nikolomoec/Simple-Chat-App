@@ -215,4 +215,24 @@ class DatabaseService {
             completion([ChatMessage]())
         }
     }
+    
+    /// Send a message to the database
+    func sendMessage(msg: String, chat: Chat) {
+        
+        // Check if it's valid chat
+        guard chat.id != nil else { return }
+        
+        // Get a reference to database
+        let db = Firestore.firestore()
+        
+        // Add msg document
+        db.collection("chats")
+            .document(chat.id!)
+            .collection("msgs")
+            .addDocument(data: ["imageurl" : "",
+                                "msg"      : msg,
+                                "senderId" : AuthViewModel.getLoggedInUserId(),
+                                "timestamp": Date()])
+        
+    }
 }

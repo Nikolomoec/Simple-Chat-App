@@ -13,8 +13,10 @@ struct ConversationView: View {
     
     @State private var message = ""
     
+    @EnvironmentObject var chatModel: ChatViewModel
+    
     var body: some View {
-        VStack {
+        VStack (spacing: 0) {
             // Header
             ZStack {
                 Color("backgroundScreen")
@@ -49,45 +51,41 @@ struct ConversationView: View {
             // Chat
             ScrollView {
                 VStack(spacing: 24) {
-                    // Their message
-                    HStack {
-                        
-                        Text("Lorem ipsum dolor sit amet consectetur. Parturient egestas vel...")
-                            .font(.message)
-                            .foregroundColor(.black)
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 24)
-                            .background(Color("searchBar"))
-                            .cornerRadius(30, corners: [.bottomRight,.topLeft,.topRight])
-                        
-                        Spacer()
-                        
-                        Text("9:41")
-                            .font(.chatDate_Time)
-                            .padding(.leading)
-                    }
-                    .padding(.horizontal)
                     
-                    // Your message
-                    HStack {
+                    ForEach(chatModel.messages) { msg in
+                        // Dynamic Message
                         
-                        Text("9:41")
-                            .font(.chatDate_Time)
-                            .padding(.trailing)
+                        let isFromUser = msg.senderId == AuthViewModel.getLoggedInUserId()
                         
-                        Spacer()
+                        HStack {
+                            
+                            if isFromUser {
+                                
+                                Text("9:41")
+                                    .font(.chatDate_Time)
+                                    .padding(.trailing)
+                                
+                                Spacer()
+                            }
+                            
+                            Text(msg.msg)
+                                .font(.message)
+                                .foregroundColor(isFromUser ? .white : .black)
+                                .padding(.vertical, 16)
+                                .padding(.horizontal, 24)
+                                .background(isFromUser ? Color("textBubble") : Color("searchBar"))
+                                .cornerRadius(30, corners: isFromUser ? [.bottomLeft,.topLeft,.topRight] : [.bottomRight,.topLeft,.topRight])
+                        }
+                        .padding(.horizontal)
                         
-                        Text("Lorem ipsum dolor sit amet consectetur. Parturient egestas velhgjg hgjgjhj jhjgjgjg...")
-                            .font(.message)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 24)
-                            .background(Color("textBubble"))
-                            .cornerRadius(30, corners: [.bottomLeft,.topLeft,.topRight])
-
+                        if !isFromUser {
+                            Spacer()
+                            
+                            Text("9:41")
+                                .font(.chatDate_Time)
+                                .padding(.trailing)
+                        }
                     }
-                    .padding(.horizontal)
-                    
                 }
                 .padding(.top)
             }
@@ -139,6 +137,13 @@ struct ConversationView: View {
                     
                     // Send Button
                     Button {
+                        // Clean Up text msg
+                        
+                        // Send message
+                        chatModel.sendMessage(msg: message)
+                        
+                        // Clear TextField
+                        message = ""
                         
                     } label: {
                         Image(systemName: "paperplane.fill")
@@ -152,11 +157,16 @@ struct ConversationView: View {
                 .padding(.horizontal, 30)
             }
         }
+        .onAppear {
+            // Call chatModel to retrieve all messages
+            chatModel.getMessages()
+        }
     }
 }
 
 struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
         ConversationView(isChatShowing: .constant(true))
+            .environmentObject(ChatViewModel())
     }
 }

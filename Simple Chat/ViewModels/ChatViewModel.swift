@@ -12,6 +12,12 @@ class ChatViewModel: ObservableObject {
     
     @Published var chats = [Chat]()
     
+    @Published var selectedChat: Chat?
+    
+    @Published var messages = [ChatMessage]()
+    
+    let dataService = DatabaseService()
+    
     init() {
         // Retrieve chats when ChatViewModel is created
         getChats()
@@ -20,9 +26,23 @@ class ChatViewModel: ObservableObject {
     // Use Databse Service to retrieve chats
     // Set the retrieved data to the chats property
     func getChats() {
-        DatabaseService().getAllchats { chats in
+        dataService.getAllchats { chats in
             self.chats = chats
         }
+    }
+    
+    func getMessages() {
+        
+        guard selectedChat != nil else { return }
+        
+        dataService.getAllMessages(chat: selectedChat!) { msgs in
+            self.messages = msgs
+        }
+    }
+    func sendMessage(msg: String) {
+        guard selectedChat != nil else { return }
+        
+        dataService.sendMessage(msg: msg, chat: selectedChat!)
     }
     
 }
