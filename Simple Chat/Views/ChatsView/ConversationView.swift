@@ -14,6 +14,9 @@ struct ConversationView: View {
     @State private var message = ""
     
     @EnvironmentObject var chatModel: ChatViewModel
+    @EnvironmentObject var contactModel: ContactsViewModel
+    
+    @State var participants = [User]()
     
     var body: some View {
         VStack (spacing: 0) {
@@ -36,14 +39,25 @@ struct ConversationView: View {
                                 .padding(.leading, 10)
                         }
                         
-                        Text("Nikita Kolomoiets")
-                            .font(.nameTitle)
-                            .padding(.top, 10)
+                        if participants.count > 0 {
+                            
+                            let participant = participants.first
+                            
+                            Text("\(participant?.firstName ?? "") \(participant?.lastName ?? "")")
+                                .font(.nameTitle)
+                                .padding(.top, 10)
+                        }
                     }
                     
                     Spacer()
                     
-                    ProfileImageView(user: User())
+                    if participants.count > 0 {
+                        
+                        let participant = participants.first
+                        
+                        ProfileImageView(user: participant!)
+                        
+                    }
                 }
                 .padding(.trailing, 36)
                 .padding(.leading, 16)
@@ -61,7 +75,7 @@ struct ConversationView: View {
                             
                             if isFromUser {
                                 
-                                Text("9:41")
+                                Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
                                     .font(.chatDate_Time)
                                     .padding(.trailing)
                                 
@@ -75,16 +89,16 @@ struct ConversationView: View {
                                 .padding(.horizontal, 24)
                                 .background(isFromUser ? Color("textBubble") : Color("searchBar"))
                                 .cornerRadius(30, corners: isFromUser ? [.bottomLeft,.topLeft,.topRight] : [.bottomRight,.topLeft,.topRight])
+                            
+                            if !isFromUser {
+                                Spacer()
+                                
+                                Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
+                                    .font(.chatDate_Time)
+                                    .padding(.trailing)
+                            }
                         }
                         .padding(.horizontal)
-                        
-                        if !isFromUser {
-                            Spacer()
-                            
-                            Text("9:41")
-                                .font(.chatDate_Time)
-                                .padding(.trailing)
-                        }
                     }
                 }
                 .padding(.top)
@@ -160,6 +174,10 @@ struct ConversationView: View {
         .onAppear {
             // Call chatModel to retrieve all messages
             chatModel.getMessages()
+            
+            // Try to get other participants as User instances
+            let ids = ChatViewModel().getParticipantIds()
+            self.participants = contactModel.getParticipants(ids: ids)
         }
     }
 }
@@ -168,5 +186,6 @@ struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
         ConversationView(isChatShowing: .constant(true))
             .environmentObject(ChatViewModel())
+            .environmentObject(ContactsViewModel())
     }
 }

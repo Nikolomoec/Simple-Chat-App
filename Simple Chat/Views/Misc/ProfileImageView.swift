@@ -45,6 +45,7 @@ struct ProfileImageView: View {
                         }
                     }
                 }
+                .clipShape(Circle())
             }
             
             Circle()

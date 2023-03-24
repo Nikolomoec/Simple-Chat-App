@@ -39,10 +39,18 @@ class ChatViewModel: ObservableObject {
             self.messages = msgs
         }
     }
+    
     func sendMessage(msg: String) {
         guard selectedChat != nil else { return }
         
         dataService.sendMessage(msg: msg, chat: selectedChat!)
     }
     
+    /// Takes a array of user Ids, remove the user that logged in and returns the array without user
+    func getParticipantIds() -> [String] {
+        
+        guard selectedChat != nil else { return [String]() }
+        
+        return selectedChat!.chats.filter({ $0 !=  AuthViewModel.getLoggedInUserId()})
+    }
 }

@@ -15,7 +15,7 @@ struct Chat: Codable, Identifiable {
     
     var lastmsg: String?
     
-    var numchats: String
+    var numchats: Int
     
     @ServerTimestamp var updated: Date?
     

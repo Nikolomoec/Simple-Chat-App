@@ -21,6 +21,7 @@
 		5A0408A029CCF746008BEEC9 /* RoundedCornerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04089F29CCF746008BEEC9 /* RoundedCornerExtension.swift */; };
 		5A0408A229CD779C008BEEC9 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0408A129CD779C008BEEC9 /* ChatModel.swift */; };
 		5A0408A429CD7BB5008BEEC9 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0408A329CD7BB5008BEEC9 /* ChatViewModel.swift */; };
+		5A0408A629CDC357008BEEC9 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0408A529CDC357008BEEC9 /* DateHelper.swift */; };
 		5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */; };
 		5A31628429C6252D00BA6E4D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31628329C6252D00BA6E4D /* RootView.swift */; };
 		5A31628629C6252F00BA6E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A31628529C6252F00BA6E4D /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		5A04089F29CCF746008BEEC9 /* RoundedCornerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerExtension.swift; sourceTree = "<group>"; };
 		5A0408A129CD779C008BEEC9 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		5A0408A329CD7BB5008BEEC9 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		5A0408A529CDC357008BEEC9 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5A31627E29C6252D00BA6E4D /* Simple Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31628129C6252D00BA6E4D /* Simple_ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_ChatApp.swift; sourceTree = "<group>"; };
 		5A31628329C6252D00BA6E4D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				5A04088629C8D491008BEEC9 /* textFieldStyle.swift */,
 				5A04088E29C99510008BEEC9 /* TextHelper.swift */,
 				5A04089F29CCF746008BEEC9 /* RoundedCornerExtension.swift */,
+				5A0408A529CDC357008BEEC9 /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				5A04088D29C991D2008BEEC9 /* DatabaseService.swift in Sources */,
 				5A89236529C881780008DEE9 /* SyncContactsView.swift in Sources */,
 				5A89235529C84D220008DEE9 /* AppDelegate.swift in Sources */,
+				5A0408A629CDC357008BEEC9 /* DateHelper.swift in Sources */,
 				5A89235B29C87E960008DEE9 /* OnboardingContainerView.swift in Sources */,
 				5A04088F29C99510008BEEC9 /* TextHelper.swift in Sources */,
 				5A04088729C8D491008BEEC9 /* textFieldStyle.swift in Sources */,

@@ -162,7 +162,7 @@ class DatabaseService {
                 // Loop through all returned chat docs
                 for doc in snapshot!.documents {
                     
-                    // Parse data inro our chat structures
+                    // Parse data into our chat structures
                     let chat = try? doc.data(as: Chat.self)
                     
                     if let chat = chat {
