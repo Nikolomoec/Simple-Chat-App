@@ -14,6 +14,9 @@ import UIKit
 
 class DatabaseService {
     
+    var chatListViewListeners = [ListenerRegistration]()
+    var conversationViewListeners = [ListenerRegistration]()
+    
     func getPlatformUsers(localContacts: [CNContact], completion: @escaping ([User]) -> Void) {
         var platformUsers = [User]()
         
@@ -154,7 +157,7 @@ class DatabaseService {
         let chatsQuery = db.collection("chats")
             .whereField("chats", arrayContains: AuthViewModel.getLoggedInUserId())
         
-        chatsQuery.getDocuments { snapshot, error in
+        let listener = chatsQuery.addSnapshotListener { snapshot, error in
             if error == nil && snapshot != nil {
                 
                 var chats = [Chat]()
@@ -175,6 +178,10 @@ class DatabaseService {
                 print("Error in database retrival")
             }
         }
+        
+        // Keep track of the listener so we can close it later
+        chatListViewListeners.append(listener)
+        
     }
     
     /// This method returns all messages for a given chat
@@ -192,7 +199,7 @@ class DatabaseService {
                 .order(by: "timestamp")
             
             // Perform the query
-            msgQuery.getDocuments { snapshot, error in
+            let listener = msgQuery.addSnapshotListener { snapshot, error in
                 
                 var messages = [ChatMessage]()
                 
@@ -211,6 +218,10 @@ class DatabaseService {
                     print("Error in database retrival")
                 }
             }
+            
+            // Keep track of the listener so we can close it later
+            conversationViewListeners.append(listener)
+            
         } else {
             completion([ChatMessage]())
         }
@@ -256,4 +267,19 @@ class DatabaseService {
         })
         
     }
+    
+    // MARK: - Close Listeners
+    
+    func detachChatListViewListeners() {
+        for listener in chatListViewListeners {
+            listener.remove()
+        }
+    }
+    
+    func detachConversationViewListeners() {
+        for listener in conversationViewListeners {
+            listener.remove()
+        }
+    }
+    
 }

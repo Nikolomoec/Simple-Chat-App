@@ -9,11 +9,16 @@ import SwiftUI
 
 struct RootView: View {
     
+    // For detenting when app is will be on the background
+    @Environment(\.scenePhase) var scenePhase
+    
     @State var selectedTab: Tabs = .contacts
     
     @State var isOnboarding = !AuthViewModel.isUserLoggedIn()
     
     @State var isChatShowing = false
+    
+    @EnvironmentObject var chatModel: ChatViewModel
     
     var body: some View {
         ZStack {
@@ -42,6 +47,11 @@ struct RootView: View {
         .fullScreenCover(isPresented: $isChatShowing, onDismiss: nil) {
             ConversationView(isChatShowing: $isChatShowing)
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .background {
+                chatModel.closeChatListViewListeners()
+            }
+        }
 
     }
 }
@@ -49,5 +59,6 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView()
+            .environmentObject(ChatViewModel())
     }
 }

@@ -89,6 +89,14 @@ class ChatViewModel: ObservableObject {
         dataService.sendMessage(msg: msg, chat: selectedChat!)
     }
     
+    func closeConverstionViewListeners() {
+        dataService.detachConversationViewListeners()
+    }
+    
+    func closeChatListViewListeners() {
+        dataService.detachChatListViewListeners()
+    }
+    
     // MARK: - Helper Methods
     
     /// Takes a array of user Ids, remove the user that logged in and returns the array without user

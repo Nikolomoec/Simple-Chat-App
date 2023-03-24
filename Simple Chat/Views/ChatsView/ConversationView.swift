@@ -181,6 +181,9 @@ struct ConversationView: View {
             let ids = chatModel.getParticipantIds()
             self.participants = contactModel.getParticipants(ids: ids)
         }
+        .onDisappear {
+            chatModel.closeConverstionViewListeners()
+        }
     }
 }
 
