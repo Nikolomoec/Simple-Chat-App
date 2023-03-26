@@ -28,7 +28,6 @@ struct ConversationView: View {
     
     // Contacts Picker
     @State private var isContactPickerShowing = false
-    @State private var selectedContacts = [User]()
     
     var body: some View {
         VStack (spacing: 0) {
@@ -280,9 +279,13 @@ struct ConversationView: View {
             ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing, source: self.source)
         }
         .sheet(isPresented: $isContactPickerShowing) {
-            // When user press "Done"
+            // When user dismis view, search the conversation with selected participant
+            if let participant = participants.first {
+                chatModel.getChatFor(contact: participant)
+            } 
+            
         } content: {
-            ContactPicker(selectedContacts: $selectedContacts, isContactPickerShowing: $isPickerShowing)
+            ContactPicker(selectedContacts: $participants, isContactPickerShowing: $isContactPickerShowing)
         }
     }
 }

@@ -23,6 +23,11 @@ class ChatViewModel: ObservableObject {
         getChats()
     }
     
+    func clearSelectedChat() {
+        self.selectedChat = nil
+        self.messages.removeAll()
+    }
+    
     // Use Databse Service to retrieve chats
     // Set the retrieved data to the chats property
     func getChats() {
@@ -48,7 +53,7 @@ class ChatViewModel: ObservableObject {
             
         } else {
             // Create a new one
-            var newChat = Chat(id: nil,
+            let newChat = Chat(id: nil,
                                lastmsg: nil,
                                numchats: 2,
                                updated: nil,

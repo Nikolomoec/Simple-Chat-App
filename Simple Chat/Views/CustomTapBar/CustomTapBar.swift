@@ -17,6 +17,8 @@ struct CustomTapBar: View {
     @Binding var selectedTab: Tabs
     @Binding var isChatShowing: Bool
     
+    @EnvironmentObject var chatModel: ChatViewModel
+    
     var body: some View {
         
         HStack {
@@ -29,6 +31,9 @@ struct CustomTapBar: View {
             }
             
             Button {
+                // Clear the selected chat
+                chatModel.clearSelectedChat()
+                
                 // Create New Chat View
                 isChatShowing = true
                 
@@ -59,5 +64,6 @@ struct CustomTapBar: View {
 struct CustomTapBar_Previews: PreviewProvider {
     static var previews: some View {
         CustomTapBar(selectedTab: .constant(.contacts), isChatShowing: .constant(true))
+            .environmentObject(ChatViewModel())
     }
 }

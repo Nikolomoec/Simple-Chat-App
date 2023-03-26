@@ -12,13 +12,88 @@ struct ContactPicker: View {
     @Binding var selectedContacts: [User]
     @Binding var isContactPickerShowing: Bool
     
+    @EnvironmentObject var contactsModel: ContactsViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            // Background Color if needed:
+            
+            // Contacts
+            VStack(spacing: 0) {
+                
+                // Title
+                ZStack {
+                    Color("textBubble")
+                    Text("Select Contacts to chat with")
+                        .foregroundColor(.white)
+                        .font(.nameTitle)
+                }
+                .frame(height: 66)
+                
+                ScrollView {
+                    ForEach(contactsModel.filterUsers) { contact in
+                        
+                        // Determine if this user is selectedContact
+                        var selectedContact = selectedContacts.contains { u in
+                            u.id == contact.id
+                        }
+                        
+                        ZStack {
+                            ContactRow(user: contact)
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    // Toogle the contact to be added in selectedContacts
+                                    if selectedContact {
+                                        // Remove this contact from selectedContacts
+                                        selectedContacts.removeAll()
+                                    } else {
+                                        // Remove the other contacts
+                                        selectedContacts.removeAll()
+                                        
+                                        // Add this contact to selectedContacts
+                                        selectedContacts.append(contact)
+                                    }
+                                    
+                                } label: {
+                                    Image(systemName: selectedContact ? "checkmark.circle.fill" : "checkmark.circle")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(Color("textBubble"))
+                                }
+                                
+                            }
+                        }
+                        .padding(.top, 18)
+                        .padding(.horizontal, 30)
+                    }
+                }
+            }
+            VStack {
+                
+                Spacer()
+                
+                // Done button, dismiss the contact picker
+                Button {
+                    isContactPickerShowing = false
+                } label: {
+                    ZStack {
+                        Color("textBubble")
+                        
+                        Text("Done")
+                            .font(.nameTitle)
+                            .foregroundColor(.white)
+                    }
+                }
+                .frame(height: 56)
+            }
+        }
+        .onAppear {
+            contactsModel.filterContacts(filterBy: "")
+        }
     }
 }
 
-struct ContactPickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactPicker(selectedContacts: .constant([User]()), isContactPickerShowing: .constant(true))
-    }
-}
+
