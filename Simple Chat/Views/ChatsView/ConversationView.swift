@@ -18,6 +18,14 @@ struct ConversationView: View {
     
     @State var participants = [User]()
     
+    // Image Picker
+    @State private var selectedImage: UIImage?
+    @State private var isPickerShowing = false
+    
+    @State private var source: UIImagePickerController.SourceType = .photoLibrary
+    
+    @State private var isSourceDialogShowing = false
+    
     var body: some View {
         VStack (spacing: 0) {
             // Header
@@ -84,14 +92,13 @@ struct ConversationView: View {
                                     
                                     Spacer()
                                 }
-                                
-                                Text(msg.msg)
-                                    .font(.message)
-                                    .foregroundColor(isFromUser ? .white : .black)
-                                    .padding(.vertical, 16)
-                                    .padding(.horizontal, 24)
-                                    .background(isFromUser ? Color("textBubble") : Color("searchBar"))
-                                    .cornerRadius(30, corners: isFromUser ? [.bottomLeft,.topLeft,.topRight] : [.bottomRight,.topLeft,.topRight])
+                                if msg.imageurl == "" {
+                                    // Text Message
+                                    ConversationTextMesage(msg: msg.msg, isFromUser: isFromUser)
+                                } else {
+                                    // Image Message
+                                    ConversationPhotoMessage(imageUrl: msg.imageurl!, isFromUser: isFromUser)
+                                }
                                 
                                 if !isFromUser {
                                     Spacer()
@@ -125,7 +132,7 @@ struct ConversationView: View {
                     
                     // Picker Photo Button
                     Button {
-                        
+                        isSourceDialogShowing = true
                     } label: {
                         Image(systemName: "camera.fill")
                             .resizable()
@@ -139,39 +146,71 @@ struct ConversationView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .frame(width: 270, height: 44)
                             .foregroundColor(Color("searchBar"))
-                        TextField("Aa", text: $message)
-                            .padding(10)
-                            .padding(.leading, 7)
-                            .font(.chatTextField)
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                // Emoji picker
+                        
+                        if selectedImage == nil {
+                            TextField("Aa", text: $message)
+                                .padding(10)
+                                .padding(.leading, 7)
+                                .font(.chatTextField)
+                            HStack {
+                                Spacer()
                                 
-                            } label: {
-                                Image(systemName: "face.smiling")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 24, height: 24)
-                                    .foregroundColor(Color("systemIcons"))
+                                Button {
+                                    // Emoji picker
+                                    
+                                } label: {
+                                    Image(systemName: "face.smiling")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundColor(Color("systemIcons"))
+                                }
+                                .padding(.trailing, 12)
                             }
-                            .padding(.trailing, 12)
+                        } else {
+                            Text("Image")
+                                .padding(10)
+                                .padding(.leading, 7)
+                                .font(.chatTextField)
+                                .foregroundColor(Color("searchBarText"))
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    // Delete button
+                                    selectedImage = nil
+                                } label: {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundColor(Color("systemIcons"))
+                                }
+                                .padding(.trailing, 12)
+                            }
                         }
-
                     }
                     .padding(.horizontal, 13.5)
                     
                     // Send Button
                     Button {
-                        // Clean Up text msg
-                        
-                        // Send message
-                        chatModel.sendMessage(msg: message)
-                        
-                        // Clear TextField
-                        message = ""
-                        
+                        // Check if image is selected, if so send an image
+                        if selectedImage != nil {
+                            
+                            // Send Image message
+                            chatModel.sendImage(image: selectedImage!)
+                            
+                            // Clear image
+                            selectedImage = nil
+                            
+                        } else {
+                            // Send message
+                            chatModel.sendMessage(msg: message)
+                            
+                            // Clear TextField
+                            message = ""
+                        }
                     } label: {
                         Image(systemName: "paperplane.fill")
                             .resizable()
@@ -179,7 +218,7 @@ struct ConversationView: View {
                             .frame(width: 33, height: 33)
                             .foregroundColor(Color("textBubble"))
                     }
-                    .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+                    .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines) == "" && selectedImage == nil)
 
                 }
                 .padding(.horizontal, 30)
@@ -195,6 +234,35 @@ struct ConversationView: View {
         }
         .onDisappear {
             chatModel.closeConverstionViewListeners()
+        }
+        .confirmationDialog("From where?", isPresented: $isSourceDialogShowing, actions: {
+            
+            // Set the source to image library
+            // Show the image picker
+            Button {
+                
+                self.source = .photoLibrary
+                isPickerShowing = true
+                
+            } label: {
+                Text("Photo Library")
+            }
+            
+            // Set the source to camera
+            // Show the image picker
+            Button {
+                
+                self.source = .camera
+                isPickerShowing = true
+                
+            } label: {
+                Text("Take Photo")
+            }
+            
+            
+        })
+        .sheet(isPresented: $isPickerShowing) {
+            ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing, source: self.source)
         }
     }
 }

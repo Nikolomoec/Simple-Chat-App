@@ -97,6 +97,12 @@ class ChatViewModel: ObservableObject {
         dataService.detachChatListViewListeners()
     }
     
+    func sendImage(image: UIImage) {
+        guard selectedChat != nil else { return }
+        
+        dataService.sendImage(image: image, chat: selectedChat!)
+    }
+    
     // MARK: - Helper Methods
     
     /// Takes a array of user Ids, remove the user that logged in and returns the array without user
