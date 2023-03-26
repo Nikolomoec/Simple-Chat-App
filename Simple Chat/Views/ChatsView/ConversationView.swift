@@ -31,7 +31,7 @@ struct ConversationView: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            // Header
+            // MARK: - Header
             ZStack {
                 Color("backgroundScreen")
                     .ignoresSafeArea()
@@ -63,9 +63,27 @@ struct ConversationView: View {
                             let participant = participants.first
                             
                             // Title Name
-                            Text("\(participant?.firstName ?? "") \(participant?.lastName ?? "")")
-                                .font(.nameTitle)
-                                .padding(.top, 10)
+                            Group {
+                                if participants.count == 1 {
+                                    
+                                    Text("\(participant?.firstName ?? "") \(participant?.lastName ?? "")")
+                                    
+                                } else if participants.count == 2 {
+                                    
+                                    let participant2 = participants[1]
+                                    
+                                    Text("\(participant?.firstName ?? ""), \(participant2.firstName ?? "")")
+                                    
+                                } else if participants.count > 2 {
+                                    
+                                    let participant2 = participants[1]
+                                    
+                                    Text("\(participant?.firstName ?? ""), \(participant2.firstName ?? "") + \(participants.count - 2) others")
+                                    
+                                }
+                            }
+                            .font(.nameTitle)
+                            .padding(.top, 10)
                         } else {
                             Text("Recipient")
                                 .font(.chatTextField)
@@ -99,7 +117,7 @@ struct ConversationView: View {
                 .padding(.trailing, 36)
                 .padding(.leading, 16)
             }
-            // Chat
+            // MARK: - Main Chat
             ScrollViewReader { proxy in
                 ScrollView {
                     VStack(spacing: 24) {
@@ -151,7 +169,7 @@ struct ConversationView: View {
                 }
             }
             if participants.count > 0 {
-                // Message bar
+                // MARK: - Footer
                 ZStack {
                     Color.white
                         .ignoresSafeArea()
@@ -238,6 +256,7 @@ struct ConversationView: View {
                 }
             }
         }
+        // MARK: - All ZStack Modifiers
         .onAppear {
             // Call chatModel to retrieve all messages
             chatModel.getMessages()

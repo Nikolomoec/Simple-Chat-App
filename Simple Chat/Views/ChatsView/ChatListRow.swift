@@ -24,8 +24,28 @@ struct ChatListRow: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 // Name
-                Text("\(participant?.firstName ?? "Unkown") \(participant?.lastName ?? "")")
+                if let otherParticipants = otherParticipants {
+                    Group {
+                        if otherParticipants.count == 1 {
+                            
+                            Text("\(participant?.firstName ?? "Unkown") \(participant?.lastName ?? "")")
+                            
+                        } else if otherParticipants.count == 2 {
+                            
+                            let participant2 = otherParticipants[1]
+                            
+                            Text("\(participant?.firstName ?? "Unkown"), \(participant2.firstName ?? "")")
+                            
+                        } else if otherParticipants.count > 2 {
+                            
+                            let participant2 = otherParticipants[1]
+                            
+                            Text("\(participant?.firstName ?? "Unkown") \(participant2.firstName ?? "") + \(otherParticipants.count - 2) others")
+                            
+                        }
+                    }
                     .font(.namePreview)
+                }
                 // Last Message
                 Text(chat.lastmsg ?? "")
                     .font(.message)
