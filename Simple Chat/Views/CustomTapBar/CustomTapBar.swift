@@ -15,6 +15,7 @@ enum Tabs: Int {
 struct CustomTapBar: View {
     
     @Binding var selectedTab: Tabs
+    @Binding var isChatShowing: Bool
     
     var body: some View {
         
@@ -28,7 +29,9 @@ struct CustomTapBar: View {
             }
             
             Button {
-                AuthViewModel.logout()
+                // Create New Chat View
+                isChatShowing = true
+                
             } label: {
                     
                     VStack(alignment: .center, spacing: 4) {
@@ -55,6 +58,6 @@ struct CustomTapBar: View {
 
 struct CustomTapBar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTapBar(selectedTab: .constant(.contacts))
+        CustomTapBar(selectedTab: .constant(.contacts), isChatShowing: .constant(true))
     }
 }

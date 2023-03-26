@@ -36,7 +36,7 @@ struct RootView: View {
                 
                 Spacer()
                 
-                CustomTapBar(selectedTab: $selectedTab)
+                CustomTapBar(selectedTab: $selectedTab, isChatShowing: $isChatShowing)
                 
             }
         }

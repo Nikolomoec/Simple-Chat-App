@@ -26,6 +26,10 @@ struct ConversationView: View {
     
     @State private var isSourceDialogShowing = false
     
+    // Contacts Picker
+    @State private var isContactPickerShowing = false
+    @State private var selectedContacts = [User]()
+    
     var body: some View {
         VStack (spacing: 0) {
             // Header
@@ -36,15 +40,23 @@ struct ConversationView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         
-                        Button {
-                            isChatShowing.toggle()
-                        } label: {
-                            Image(systemName: "arrow.backward")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.blue)
-                                .padding(.leading, 10)
+                        HStack {
+                            Button {
+                                isChatShowing.toggle()
+                            } label: {
+                                Image(systemName: "arrow.backward")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(.blue)
+                                    .padding(.leading, 10)
+                            }
+                            
+                            if participants.count == 0 {
+                                Text("New Message")
+                                    .padding(.leading)
+                                    .font(.nameTitle)
+                            }
                         }
                         
                         if participants.count > 0 {
@@ -55,6 +67,10 @@ struct ConversationView: View {
                             Text("\(participant?.firstName ?? "") \(participant?.lastName ?? "")")
                                 .font(.nameTitle)
                                 .padding(.top, 10)
+                        } else {
+                            Text("Recipient")
+                                .font(.chatTextField)
+                                .foregroundColor(Color("searchBarText"))
                         }
                     }
                     
@@ -67,6 +83,18 @@ struct ConversationView: View {
                         // Title profile image
                         ProfileImageView(user: participant!)
                         
+                    } else {
+                        // New Message
+                        Button {
+                            // Show Contact Picker
+                            isContactPickerShowing = true
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                                .tint(Color("textBubble"))
+                        }
                     }
                 }
                 .padding(.trailing, 36)
@@ -123,105 +151,92 @@ struct ConversationView: View {
                     }
                 }
             }
-            // Message bar
-            ZStack {
-                Color.white
-                    .ignoresSafeArea()
-                    .frame(height: 85)
-                HStack() {
-                    
-                    // Picker Photo Button
-                    Button {
-                        isSourceDialogShowing = true
-                    } label: {
-                        Image(systemName: "camera.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 33, height: 33)
-                            .foregroundColor(Color("secondaryText"))
-                    }
-                    
-                    // TextField
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(width: 270, height: 44)
-                            .foregroundColor(Color("searchBar"))
+            if participants.count > 0 {
+                // Message bar
+                ZStack {
+                    Color.white
+                        .ignoresSafeArea()
+                        .frame(height: 85)
+                    HStack() {
                         
-                        if selectedImage == nil {
-                            TextField("Aa", text: $message)
-                                .padding(10)
-                                .padding(.leading, 7)
-                                .font(.chatTextField)
-                            HStack {
-                                Spacer()
+                        // Picker Photo Button
+                        Button {
+                            isSourceDialogShowing = true
+                        } label: {
+                            Image(systemName: "camera.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 33, height: 33)
+                                .foregroundColor(Color("secondaryText"))
+                        }
+                        
+                        // TextField
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16)
+                                .frame(width: 270, height: 44)
+                                .foregroundColor(Color("searchBar"))
+                            
+                            if selectedImage == nil {
+                                TextField("Aa", text: $message)
+                                    .padding(10)
+                                    .padding(.leading, 7)
+                                    .font(.chatTextField)
+                            } else {
+                                Text("Image")
+                                    .padding(10)
+                                    .padding(.leading, 7)
+                                    .font(.chatTextField)
+                                    .foregroundColor(Color("searchBarText"))
                                 
-                                Button {
-                                    // Emoji picker
+                                HStack {
+                                    Spacer()
                                     
-                                } label: {
-                                    Image(systemName: "face.smiling")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 24, height: 24)
-                                        .foregroundColor(Color("systemIcons"))
+                                    Button {
+                                        // Delete button
+                                        selectedImage = nil
+                                    } label: {
+                                        Image(systemName: "multiply.circle.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color("systemIcons"))
+                                    }
+                                    .padding(.trailing, 12)
                                 }
-                                .padding(.trailing, 12)
                             }
-                        } else {
-                            Text("Image")
-                                .padding(10)
-                                .padding(.leading, 7)
-                                .font(.chatTextField)
-                                .foregroundColor(Color("searchBarText"))
-                            
-                            HStack {
-                                Spacer()
+                        }
+                        .padding(.horizontal, 13.5)
+                        
+                        // Send Button
+                        Button {
+                            // Check if image is selected, if so send an image
+                            if selectedImage != nil {
                                 
-                                Button {
-                                    // Delete button
-                                    selectedImage = nil
-                                } label: {
-                                    Image(systemName: "multiply.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 24, height: 24)
-                                        .foregroundColor(Color("systemIcons"))
-                                }
-                                .padding(.trailing, 12)
+                                // Send Image message
+                                chatModel.sendImage(image: selectedImage!)
+                                
+                                // Clear image
+                                selectedImage = nil
+                                
+                            } else {
+                                // Send message
+                                chatModel.sendMessage(msg: message)
+                                
+                                // Clear TextField
+                                message = ""
                             }
+                        } label: {
+                            Image(systemName: "paperplane.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 33, height: 33)
+                                .foregroundColor(Color("textBubble"))
                         }
+                        .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines) == "" && selectedImage == nil)
+                        
                     }
-                    .padding(.horizontal, 13.5)
-                    
-                    // Send Button
-                    Button {
-                        // Check if image is selected, if so send an image
-                        if selectedImage != nil {
-                            
-                            // Send Image message
-                            chatModel.sendImage(image: selectedImage!)
-                            
-                            // Clear image
-                            selectedImage = nil
-                            
-                        } else {
-                            // Send message
-                            chatModel.sendMessage(msg: message)
-                            
-                            // Clear TextField
-                            message = ""
-                        }
-                    } label: {
-                        Image(systemName: "paperplane.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 33, height: 33)
-                            .foregroundColor(Color("textBubble"))
-                    }
-                    .disabled(message.trimmingCharacters(in: .whitespacesAndNewlines) == "" && selectedImage == nil)
-
+                    .padding(.horizontal, 30)
                 }
-                .padding(.horizontal, 30)
             }
         }
         .onAppear {
@@ -263,6 +278,11 @@ struct ConversationView: View {
         })
         .sheet(isPresented: $isPickerShowing) {
             ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing, source: self.source)
+        }
+        .sheet(isPresented: $isContactPickerShowing) {
+            // When user press "Done"
+        } content: {
+            ContactPicker(selectedContacts: $selectedContacts, isContactPickerShowing: $isPickerShowing)
         }
     }
 }
