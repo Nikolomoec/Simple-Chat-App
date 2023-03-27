@@ -18,8 +18,18 @@ struct ChatListRow: View {
             
             let participant = otherParticipants?.first
             // Profile Image
-            if let participant = participant {
-                ProfileImageView(user: participant)
+            if otherParticipants != nil && otherParticipants!.count == 1 {
+                
+                // Display profile image for a single user
+                if let participant = participant {
+                    ProfileImageView(user: participant)
+                    
+                }
+            } else if otherParticipants != nil && otherParticipants!.count > 1{
+                
+                // Display profile image for a group chat
+                GroupProfileImageView(users: otherParticipants!)
+                
             }
             
             VStack(alignment: .leading, spacing: 4) {
@@ -40,7 +50,7 @@ struct ChatListRow: View {
                             
                             let participant2 = otherParticipants[1]
                             
-                            Text("\(participant?.firstName ?? "Unkown") \(participant2.firstName ?? "") + \(otherParticipants.count - 2) others")
+                            Text("\(participant?.firstName ?? "Unkown"), \(participant2.firstName ?? "") + \(otherParticipants.count - 2) others")
                             
                         }
                     }

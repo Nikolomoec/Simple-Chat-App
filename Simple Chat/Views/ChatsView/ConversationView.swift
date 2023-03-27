@@ -93,13 +93,16 @@ struct ConversationView: View {
                     
                     Spacer()
                     
-                    if participants.count > 0 {
+                    if participants.count == 1 {
                         
                         let participant = participants.first
                         
-                        // Title profile image
+                        // Title profile image for a single user
                         ProfileImageView(user: participant!)
                         
+                    } else if participants.count > 1 {
+                        // Title profile image for a group chats
+                        GroupProfileImageView(users: participants)
                     } else {
                         // New Message
                         Button {
@@ -298,10 +301,10 @@ struct ConversationView: View {
             ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing, source: self.source)
         }
         .sheet(isPresented: $isContactPickerShowing) {
-            // When user dismis view, search the conversation with selected participant
+            // When user dismis view, search the conversation with selected participants
             if let participant = participants.first {
-                chatModel.getChatFor(contact: participant)
-            } 
+                chatModel.getChatFor(contacts: participants)
+            }
             
         } content: {
             ContactPicker(selectedContacts: $participants, isContactPickerShowing: $isContactPickerShowing)

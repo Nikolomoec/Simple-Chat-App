@@ -53,6 +53,7 @@
 		5AB1076F29D0A315001BE832 /* ConversationTextMesage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1076E29D0A315001BE832 /* ConversationTextMesage.swift */; };
 		5AB1077129D0A573001BE832 /* ConversationPhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077029D0A573001BE832 /* ConversationPhotoMessage.swift */; };
 		5AB1077329D0BF6D001BE832 /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077229D0BF6D001BE832 /* ContactPicker.swift */; };
+		5AB1077529D1F267001BE832 /* GroupProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077429D1F267001BE832 /* GroupProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		5AB1076E29D0A315001BE832 /* ConversationTextMesage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTextMesage.swift; sourceTree = "<group>"; };
 		5AB1077029D0A573001BE832 /* ConversationPhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPhotoMessage.swift; sourceTree = "<group>"; };
 		5AB1077229D0BF6D001BE832 /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
+		5AB1077429D1F267001BE832 /* GroupProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				5A04089D29CB2E3B008BEEC9 /* ProfileImageView.swift */,
+				5AB1077429D1F267001BE832 /* GroupProfileImageView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				5A0408A429CD7BB5008BEEC9 /* ChatViewModel.swift in Sources */,
 				5A31628229C6252D00BA6E4D /* Simple_ChatApp.swift in Sources */,
 				5A0408A029CCF746008BEEC9 /* RoundedCornerExtension.swift in Sources */,
+				5AB1077529D1F267001BE832 /* GroupProfileImageView.swift in Sources */,
 				5A04089E29CB2E3B008BEEC9 /* ProfileImageView.swift in Sources */,
 				5A89236729C8C2080008DEE9 /* ButtonStyle.swift in Sources */,
 				5A04089B29CB0C1A008BEEC9 /* ConversationView.swift in Sources */,

@@ -47,14 +47,23 @@ struct ContactPicker: View {
                                 Button {
                                     // Toogle the contact to be added in selectedContacts
                                     if selectedContact {
-                                        // Remove this contact from selectedContacts
-                                        selectedContacts.removeAll()
-                                    } else {
-                                        // Remove the other contacts
-                                        selectedContacts.removeAll()
                                         
-                                        // Add this contact to selectedContacts
-                                        selectedContacts.append(contact)
+                                        // Find index where we need to remove the contact
+                                        let index = selectedContacts.firstIndex(of: contact)
+                                        
+                                        // Remove this contact from selectedContacts
+                                        if let index = index {
+                                            selectedContacts.remove(at: index)
+                                        }
+                                    } else {
+                                        // Impose the limit of 3
+                                        if selectedContacts.count < 3 {
+                                            // Add this contact to selectedContacts
+                                            selectedContacts.append(contact)
+                                        } else {
+                                            // Show message to say limit reached
+                                            
+                                        }
                                     }
                                     
                                 } label: {

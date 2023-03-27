@@ -36,14 +36,23 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    /// Search for chat with past in user, if found set as selected chat, if not found create chat
-    func getChatFor(contact: User) {
+    /// Search for chat with past in users, if found set as selected chat, if not found create chat
+    func getChatFor(contacts: [User]) {
         // Check the user
-        guard contact.id != nil else { return }
+        for contact in contacts {
+            guard contact.id != nil else { return }
+        }
         
-        let foundChat = chats.filter({ $0.numchats == 2 && $0.chats.contains(contact.id!) })
+        // Create a set from the ids of the contacts passed in
+        let setOfContactIds = Set(arrayLiteral: contacts.map { $0.id! })
         
-        // Found a chat between the user and a contact
+        let foundChat = chats.filter { chat in
+            let setOfParticipantIds = Set(arrayLiteral: chat.chats)
+            
+            return chat.numchats == contacts.count + 1 && setOfContactIds.isSubset(of: setOfParticipantIds)
+        }
+        
+        // Found a chat between the users and a contacts
         if !foundChat.isEmpty {
             // Set a selectedChat
             self.selectedChat = foundChat.first!
@@ -53,11 +62,16 @@ class ChatViewModel: ObservableObject {
             
         } else {
             // Create a new one
+            
+            // Create array of ids of all participants
+            var allParticipantIds = contacts.map { $0.id! }
+            allParticipantIds.append(AuthViewModel.getLoggedInUserId())
+            
             let newChat = Chat(id: nil,
                                lastmsg: nil,
-                               numchats: 2,
+                               numchats: allParticipantIds.count,
                                updated: nil,
-                               chats: [AuthViewModel.getLoggedInUserId(),contact.id!],
+                               chats: allParticipantIds,
                                msgs: nil)
             
             // Set as selectedChat
@@ -68,9 +82,9 @@ class ChatViewModel: ObservableObject {
                 // Set the docId to the new chat
                 self.selectedChat = Chat(id: docId,
                                          lastmsg: nil,
-                                         numchats: 2,
+                                         numchats: allParticipantIds.count,
                                          updated: nil,
-                                         chats: [AuthViewModel.getLoggedInUserId(),contact.id!],
+                                         chats: allParticipantIds,
                                          msgs: nil)
                 
                 // Add new chat to the chat list
