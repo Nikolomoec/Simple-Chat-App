@@ -139,13 +139,37 @@ struct ConversationView: View {
                                         .padding(.trailing)
                                     
                                     Spacer()
+                                } else if participants.count > 1 {
+                                    // If this is group chat display user profile image
+                                    let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
+                                    
+                                    if let userOfMsg = userOfMsg {
+                                        ProfileImageView(user: userOfMsg)
+                                            .padding(.trailing, 16)
+                                    }
                                 }
+                                
                                 if msg.imageurl == "" {
                                     // Text Message
-                                    ConversationTextMesage(msg: msg.msg, isFromUser: isFromUser)
+                                    
+                                    // Determine if this is a group chat and a msg from another user
+                                    if participants.count > 1 && !isFromUser {
+                                        // Find user name
+                                        let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
+                                        
+                                            // Show a text msg with name
+                                            ConversationTextMesage(msg: msg.msg,
+                                                                   isFromUser: isFromUser,
+                                                                   name: "\(userOfMsg?.firstName ?? "") \(userOfMsg?.lastName ?? "")")
+                                    } else {
+                                        // Text msg with no name
+                                        ConversationTextMesage(msg: msg.msg,
+                                                               isFromUser: isFromUser)
+                                    }
                                 } else {
                                     // Image Message
-                                    ConversationPhotoMessage(imageUrl: msg.imageurl!, isFromUser: isFromUser)
+                                    ConversationPhotoMessage(imageUrl: msg.imageurl!,
+                                                             isFromUser: isFromUser)
                                 }
                                 
                                 if !isFromUser {
