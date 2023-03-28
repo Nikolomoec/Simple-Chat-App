@@ -132,7 +132,7 @@ class DatabaseService {
         
         // Create firebase ref
         let db = Firestore.firestore()
-        db.collection("users").document(AuthViewModel.getLoggedInUserId())
+        db.collection("user").document(AuthViewModel.getLoggedInUserId())
             .getDocument { snapshot, error in
                 if snapshot != nil && error == nil {
                     

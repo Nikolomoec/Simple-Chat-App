@@ -70,7 +70,7 @@ extension Font {
     }
     
     public static var settings: Font {
-        return Font.custom("LexendDeca-SemiBold", size: 15)
+        return Font.custom("LexendDeca-SemiBold", size: 20)
     }
     
     public static var tapBar: Font {
@@ -78,6 +78,10 @@ extension Font {
     }
     
     public static var chatTextField: Font {
+        return Font.custom("LexendDeca-SemiBold", size: 20)
+    }
+    
+    public static var deleteButton: Font {
         return Font.custom("LexendDeca-SemiBold", size: 20)
     }
 }

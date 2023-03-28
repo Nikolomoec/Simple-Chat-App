@@ -16,10 +16,12 @@ struct RootView: View {
     
     @State var isOnboarding = !AuthViewModel.isUserLoggedIn()
     
-    @State var isChatShowing = false
+    @State private var isChatShowing = false
     
     @EnvironmentObject var contactsModel: ContactsViewModel
     @EnvironmentObject var chatModel: ChatViewModel
+    
+    @State private var isSettingsShowing = false
     
     var body: some View {
         ZStack {
@@ -29,9 +31,9 @@ struct RootView: View {
                 
                 switch selectedTab {
                 case .chats:
-                    ChatsListView(isChatShowing: $isChatShowing)
+                    ChatsListView(isChatShowing: $isChatShowing, isSettingsShowing: $isSettingsShowing)
                 case .contacts:
-                    ContactsListView(isChatShowing: $isChatShowing)
+                    ContactsListView(isChatShowing: $isChatShowing, isSettingsShowing: $isSettingsShowing)
                 }
                 
                 Spacer()
@@ -54,6 +56,10 @@ struct RootView: View {
         .fullScreenCover(isPresented: $isChatShowing, onDismiss: nil) {
             ConversationView(isChatShowing: $isChatShowing)
         }
+        .fullScreenCover(isPresented: $isSettingsShowing, content: {
+            // The settings View
+            SettingsView(isSettingsShowing: $isSettingsShowing, isOnboarding: $isOnboarding)
+        })
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
                 chatModel.closeChatListViewListeners()

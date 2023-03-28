@@ -54,6 +54,7 @@
 		5AB1077129D0A573001BE832 /* ConversationPhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077029D0A573001BE832 /* ConversationPhotoMessage.swift */; };
 		5AB1077329D0BF6D001BE832 /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077229D0BF6D001BE832 /* ContactPicker.swift */; };
 		5AB1077529D1F267001BE832 /* GroupProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB1077429D1F267001BE832 /* GroupProfileImageView.swift */; };
+		5AB68C0329D3104E0043D939 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB68C0229D3104E0043D939 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		5AB1077029D0A573001BE832 /* ConversationPhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPhotoMessage.swift; sourceTree = "<group>"; };
 		5AB1077229D0BF6D001BE832 /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		5AB1077429D1F267001BE832 /* GroupProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProfileImageView.swift; sourceTree = "<group>"; };
+		5AB68C0229D3104E0043D939 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				5A31628329C6252D00BA6E4D /* RootView.swift */,
 				5A04089329CA3B15008BEEC9 /* ChatsView */,
 				5A04089229CA3B0A008BEEC9 /* ContactsView */,
+				5AB68C0129D310310043D939 /* Settings */,
 				5A04089C29CB2E20008BEEC9 /* Misc */,
 				5A89235929C87E7A0008DEE9 /* Onboarding */,
 				5A31629C29C6395C00BA6E4D /* CustomTapBar */,
@@ -279,6 +282,14 @@
 				5A89236429C881780008DEE9 /* SyncContactsView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		5AB68C0129D310310043D939 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5AB68C0229D3104E0043D939 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +398,7 @@
 				5A89236329C881670008DEE9 /* CreateProfileView.swift in Sources */,
 				5A89235F29C881480008DEE9 /* PhoneNumberView.swift in Sources */,
 				5A3162A029C6399500BA6E4D /* CustomTapBar.swift in Sources */,
+				5AB68C0329D3104E0043D939 /* SettingsView.swift in Sources */,
 				5A3162A429C835A500BA6E4D /* TabBarButton.swift in Sources */,
 				5A04089929CAECC4008BEEC9 /* ContactRow.swift in Sources */,
 				5A89236129C881500008DEE9 /* AuthView.swift in Sources */,

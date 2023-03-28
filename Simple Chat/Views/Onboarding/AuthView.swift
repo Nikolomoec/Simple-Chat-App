@@ -15,6 +15,9 @@ struct AuthView: View {
     
     @State private var authCode = ""
     
+    @EnvironmentObject var contactsModel: ContactsViewModel
+    @EnvironmentObject var chatsModel: ChatViewModel
+    
     var body: some View {
         VStack {
             
@@ -72,6 +75,11 @@ struct AuthView: View {
                         DatabaseService().checkUserProfile { exists in
                             if exists {
                                 isOnboarding = false
+                                
+                                // Fetch User Contacts, Chats
+                                contactsModel.getLocalContacts()
+                                chatsModel.getChats()
+                                
                             } else {
                                 // Move to the next step
                                 currentStep = .profile
@@ -93,5 +101,7 @@ struct AuthView: View {
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
         AuthView(currentStep: .constant(.verification), isOnboarding: .constant(true))
+            .environmentObject(ContactsViewModel())
+            .environmentObject(ChatViewModel())
     }
 }

@@ -12,6 +12,7 @@ struct ContactsListView: View {
     @State private var search = ""
     
     @Binding var isChatShowing: Bool
+    @Binding var isSettingsShowing: Bool
     
     @EnvironmentObject var contactsModel: ContactsViewModel
     @EnvironmentObject var chatModel: ChatViewModel
@@ -24,7 +25,8 @@ struct ContactsListView: View {
                     .font(.chat_contactsTitle)
                 
                 Button {
-                    
+                    // Open Settings
+                    isSettingsShowing = true
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .resizable()
@@ -104,7 +106,7 @@ struct ContactsListView: View {
 
 struct ContactsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactsListView(isChatShowing: .constant(true))
+        ContactsListView(isChatShowing: .constant(true), isSettingsShowing: .constant(false))
             .environmentObject(ContactsViewModel())
             .environmentObject(ChatViewModel())
     }

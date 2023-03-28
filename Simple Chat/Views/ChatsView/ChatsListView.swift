@@ -14,36 +14,31 @@ struct ChatsListView: View {
     
     @Binding var isChatShowing: Bool
     
+    @Binding var isSettingsShowing: Bool
+    
     var body: some View {
         
         VStack {
             
-            HStack(spacing: 180) {
+            HStack {
                 Text("Chats")
                     .font(.chat_contactsTitle)
                 
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .tint(.black)
-                            .scaledToFill()
-                            .frame(width: 26, height: 26)
-                    }
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .tint(.black)
-                            .scaledToFill()
-                            .frame(width: 26, height: 26)
-                    }
+                Spacer()
+                
+                Button {
+                // Open Settings
+                    isSettingsShowing = true
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .tint(.black)
+                        .scaledToFill()
+                        .frame(width: 26, height: 26)
                 }
                 
             }
+            .padding(.horizontal, 35)
             .padding(.top, 16)
             
             if chatModel.chats.count > 0 {
@@ -96,7 +91,7 @@ struct ChatsListView: View {
 
 struct ChatsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatsListView(isChatShowing: .constant(true))
+        ChatsListView(isChatShowing: .constant(true), isSettingsShowing: .constant(false))
             .environmentObject(ChatViewModel())
             .environmentObject(ContactsViewModel())
     }
