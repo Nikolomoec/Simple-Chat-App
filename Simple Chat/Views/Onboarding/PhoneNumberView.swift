@@ -16,6 +16,8 @@ struct PhoneNumberView: View {
     
     @State private var isButtonDisabled = false
     
+    @State private var isErrorShowing = false
+    
     var body: some View {
         
         VStack {
@@ -64,10 +66,18 @@ struct PhoneNumberView: View {
             }
             .padding(.horizontal)
             
+            // Error label
+            Text("Please enter a valid phone number.")
+                .foregroundColor(.red)
+                .font(.verificationDesc_numberPlaceHolder)
+                .padding(.top, 20)
+                .opacity(isErrorShowing ? 1 : 0)
+            
             Spacer()
             
             Button {
                 isButtonDisabled = true
+                isErrorShowing = false
                 
                 // Send their phone number to firebase Auth
                 AuthViewModel.sendPhoneNumber(phone: phoneNumber) { error in
@@ -76,7 +86,7 @@ struct PhoneNumberView: View {
                         currentStep = .verification
                     } else {
                         // Show an error
-                        
+                        isErrorShowing = true
                     }
                     isButtonDisabled = false
                 }

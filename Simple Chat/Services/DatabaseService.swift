@@ -75,6 +75,7 @@ class DatabaseService {
         let doc = db.collection("user").document(AuthViewModel.getLoggedInUserId())
         doc.setData(["firstName" : firstName,
                      "lastName"  : lastName,
+                     "isactive"  : true,
                      "phone"     : userPhone])
         // Check if image is not nil
         

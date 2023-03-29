@@ -15,6 +15,7 @@ struct AuthView: View {
     
     @State private var authCode = ""
     @State private var isButtonTapped = false
+    @State private var isErrorShowing = false
     
     @EnvironmentObject var contactsModel: ContactsViewModel
     @EnvironmentObject var chatsModel: ChatViewModel
@@ -65,11 +66,19 @@ struct AuthView: View {
             }
             .padding(.horizontal)
             
+            // Error label
+            Text("Invalid verification code")
+                .foregroundColor(.red)
+                .font(.verificationDesc_numberPlaceHolder)
+                .padding(.top, 20)
+                .opacity(isErrorShowing ? 1 : 0)
+            
             Spacer()
             
             Button {
                 
                 isButtonTapped = true
+                isErrorShowing = false
                 
                 // Send the verification code to Firebase
                 AuthViewModel.verifyCode(code: authCode) { error in
@@ -91,6 +100,7 @@ struct AuthView: View {
                         }
                     } else {
                         // Display an error
+                        isErrorShowing = true
                     }
                     
                     isButtonTapped = false

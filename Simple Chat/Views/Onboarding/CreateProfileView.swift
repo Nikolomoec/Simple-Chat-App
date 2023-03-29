@@ -22,6 +22,9 @@ struct CreateProfileView: View {
     @State private var isSourceDialogShowing = false
     @State private var isSaveButtonDisabled = false
     
+    @State private var isErrorShowing = false
+    @State private var errorMsg = ""
+    
     var body: some View {
         VStack {
             
@@ -75,9 +78,29 @@ struct CreateProfileView: View {
             TextField("Last Name", text: $lastName)
                 .textFieldStyle(CustomTextFieldStyle())
             
+            // Error label
+            Text(errorMsg)
+                .foregroundColor(.red)
+                .font(.verificationDesc_numberPlaceHolder)
+                .padding(.top, 20)
+                .opacity(isErrorShowing ? 1 : 0)
+            
             Spacer()
             
             Button {
+                
+                // Hide error msg
+                isErrorShowing = false
+                
+                // Check if all textfields are filled
+                guard !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                      !lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                    
+                    errorMsg = "Please enter in a valid firtst and last name."
+                    isErrorShowing = true
+                    return
+                    
+                }
                 
                 isSaveButtonDisabled = true
                 
@@ -88,7 +111,9 @@ struct CreateProfileView: View {
                     if isSuscess {
                         currentStep = .contacts
                     } else {
-                        
+                        // Error with saving a profile
+                        errorMsg = "Error occurred, please try again."
+                        isErrorShowing = true
                     }
                     isSaveButtonDisabled = false
                 }
