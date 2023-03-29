@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var isDarkMode = false
+    @EnvironmentObject var settingsModel: SettingsViewModel
     
     @Binding var isSettingsShowing: Bool
     @Binding var isOnboarding: Bool
@@ -48,7 +48,7 @@ struct SettingsView: View {
                         
                         Spacer()
                         
-                        Toggle("", isOn: $isDarkMode)
+                        Toggle("", isOn: $settingsModel.isDarkMode)
                     }
                     
                     Button {
@@ -80,11 +80,13 @@ struct SettingsView: View {
                 Spacer()
             }
         }
+        .preferredColorScheme(settingsModel.isDarkMode ? .dark : .light)
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(isSettingsShowing: .constant(true), isOnboarding: .constant(false))
+            .environmentObject(SettingsViewModel())
     }
 }

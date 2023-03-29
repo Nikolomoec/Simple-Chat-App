@@ -12,12 +12,17 @@ struct Simple_ChatApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject var settingsViewModel = SettingsViewModel()
+    @StateObject var contactModel = ContactsViewModel()
+    @StateObject var chatModel = ChatViewModel()
+    
     var body: some Scene {
         WindowGroup {
             RootView()
-            //    .preferredColorScheme(.dark)
-                .environmentObject(ContactsViewModel())
-                .environmentObject(ChatViewModel())
+                .preferredColorScheme(settingsViewModel.isDarkMode ? .dark : .light)
+                .environmentObject(settingsViewModel)
+                .environmentObject(contactModel)
+                .environmentObject(chatModel)
         }
     }
 }

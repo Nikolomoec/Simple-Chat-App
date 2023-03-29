@@ -23,7 +23,7 @@ struct ConversationTextMesage: View {
             
             // Text
             Text(msg)
-                .foregroundColor(isFromUser ? .white : .black)
+                .foregroundColor(isFromUser ? .white : Color("black-white"))
         }
         .font(.message)
         .padding(.vertical, 16)
