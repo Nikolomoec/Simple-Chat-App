@@ -15,6 +15,7 @@ struct Simple_ChatApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+            //    .preferredColorScheme(.dark)
                 .environmentObject(ContactsViewModel())
                 .environmentObject(ChatViewModel())
         }

@@ -32,7 +32,7 @@ struct ChatsListView: View {
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .resizable()
-                        .tint(.black)
+                        .tint(Color("black-white"))
                         .scaledToFill()
                         .frame(width: 26, height: 26)
                 }

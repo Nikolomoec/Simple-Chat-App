@@ -15,65 +15,70 @@ struct SettingsView: View {
     @Binding var isOnboarding: Bool
     
     var body: some View {
-        VStack {
-            // Heading
-            HStack(spacing: 200) {
-                Text("Settings")
-                    .font(.chat_contactsTitle)
-                
-                Button {
-                    // Close settings View
-                    isSettingsShowing = false
-                    
-                } label: {
-                    Image(systemName: "multiply")
-                        .resizable()
-                        .tint(.black)
-                        .scaledToFill()
-                        .frame(width: 20, height: 20)
-                }
-            }
-            .padding(.top, 16)
-            .padding(.bottom, 32)
+        ZStack {
+            Color("backgroundScreen")
+                .ignoresSafeArea()
             
-            VStack (alignment: .leading, spacing: 40) {
-                HStack {
-                    Text("Dark Mode")
-                        .font(.settings)
-                        .tint(.black)
+            VStack {
+                // Heading
+                HStack(spacing: 200) {
+                    Text("Settings")
+                        .font(.chat_contactsTitle)
                     
-                    Spacer()
-                    
-                    Toggle("", isOn: $isDarkMode)
+                    Button {
+                        // Close settings View
+                        isSettingsShowing = false
+                        
+                    } label: {
+                        Image(systemName: "multiply")
+                            .resizable()
+                            .tint(Color("black-white"))
+                            .scaledToFill()
+                            .frame(width: 20, height: 20)
+                    }
                 }
+                .padding(.top, 16)
+                .padding(.bottom, 32)
                 
-                Button {
-                    // Log out
-                    AuthViewModel.logout()
+                VStack (alignment: .leading, spacing: 40) {
+                    HStack {
+                        Text("Dark Mode")
+                            .font(.settings)
+                            .tint(.black)
+                        
+                        Spacer()
+                        
+                        Toggle("", isOn: $isDarkMode)
+                    }
                     
-                    // Return user to Onboarding sequence
-                    isOnboarding = true
+                    Button {
+                        // Log out
+                        AuthViewModel.logout()
+                        
+                        // Return user to Onboarding sequence
+                        isOnboarding = true
+                        
+                    } label: {
+                        Text("Log Out")
+                            .font(.settings)
+                    }
+                    .tint(Color("black-white"))
                     
-                } label: {
-                    Text("Log Out")
-                        .font(.settings)
+                    Button {
+                        // Delete user account
+                        
+                    } label: {
+                        Text("Delete account")
+                            .font(.deleteButton)
+                            .foregroundColor(Color("deleteButton"))
+                    }
+                    
                 }
-                .tint(.black)
-
-                Button {
-                    // Delete user account
-                    
-                } label: {
-                    Text("Delete account")
-                        .font(.deleteButton)
-                        .foregroundColor(Color("deleteButton"))
-                }
-
+                .padding(.leading, 22)
+                .padding(.trailing, 34)
+                
+                Spacer()
             }
-            .padding(.leading, 22)
-            .padding(.trailing, 34)
-            
-            Spacer()
         }
     }
 }

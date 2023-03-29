@@ -28,7 +28,7 @@ struct WelcomeView: View {
                 Text("Most simple Chat app You will ever find!")
                     .font(.startDesc)
             }
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("onboarding"))
             .multilineTextAlignment(.center)
             
             Spacer()

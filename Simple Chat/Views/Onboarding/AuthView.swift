@@ -33,14 +33,14 @@ struct AuthView: View {
                     .padding(.horizontal, 39)
                     .padding(.bottom, 34)
             }
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("onboarding"))
             .multilineTextAlignment(.center)
             
             ZStack {
                 
                 Rectangle()
                     .frame(height: 56)
-                    .foregroundColor(Color("TextField"))
+                    .foregroundColor(Color("searchBar"))
                 
                 HStack {
                     TextField("", text: $authCode)

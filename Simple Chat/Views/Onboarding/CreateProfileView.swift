@@ -37,7 +37,7 @@ struct CreateProfileView: View {
                     .padding(.horizontal, 39)
                     .padding(.bottom, 34)
             }
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("onboarding"))
             .multilineTextAlignment(.center)
             
             Spacer()
@@ -55,10 +55,10 @@ struct CreateProfileView: View {
                             .clipShape(Circle())
                     } else {
                         Circle()
-                            .foregroundColor(Color("TextField"))
+                            .foregroundColor(Color("white-black"))
                         
                         Image(systemName: "camera.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("black-white"))
                     }
                     Circle()
                         .stroke(Color("profileBorder"), lineWidth: 2)

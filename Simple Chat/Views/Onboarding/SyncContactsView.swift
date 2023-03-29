@@ -30,7 +30,7 @@ struct SyncContactsView: View {
                 Text("Continue to start chatting with your friends.")
                     .font(.startDesc)
             }
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("onboarding"))
             .multilineTextAlignment(.center)
             
             Spacer()

@@ -122,69 +122,75 @@ struct ConversationView: View {
             }
             // MARK: - Main Chat
             ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(spacing: 24) {
-                        
-                        ForEach (Array(chatModel.messages.enumerated()), id: \.element) { index, msg in
-                            // Dynamic Message
+                ZStack {
+                    // Background color of chat flow
+                    Color("secondBack")
+                    
+                    // Chat flow
+                    ScrollView {
+                        VStack(spacing: 24) {
                             
-                            let isFromUser = msg.senderId == AuthViewModel.getLoggedInUserId()
-                            
-                            HStack {
+                            ForEach (Array(chatModel.messages.enumerated()), id: \.element) { index, msg in
+                                // Dynamic Message
                                 
-                                if isFromUser {
-                                    
-                                    Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
-                                        .font(.chatDate_Time)
-                                        .padding(.trailing)
-                                    
-                                    Spacer()
-                                } else if participants.count > 1 {
-                                    // If this is group chat display user profile image
-                                    let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
-                                    
-                                    if let userOfMsg = userOfMsg {
-                                        ProfileImageView(user: userOfMsg)
-                                            .padding(.trailing, 16)
-                                    }
-                                }
+                                let isFromUser = msg.senderId == AuthViewModel.getLoggedInUserId()
                                 
-                                if msg.imageurl == "" {
-                                    // Text Message
+                                HStack {
                                     
-                                    // Determine if this is a group chat and a msg from another user
-                                    if participants.count > 1 && !isFromUser {
-                                        // Find user name
+                                    if isFromUser {
+                                        
+                                        Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
+                                            .font(.chatDate_Time)
+                                            .padding(.trailing)
+                                        
+                                        Spacer()
+                                    } else if participants.count > 1 {
+                                        // If this is group chat display user profile image
                                         let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
                                         
+                                        if let userOfMsg = userOfMsg {
+                                            ProfileImageView(user: userOfMsg)
+                                                .padding(.trailing, 16)
+                                        }
+                                    }
+                                    
+                                    if msg.imageurl == "" {
+                                        // Text Message
+                                        
+                                        // Determine if this is a group chat and a msg from another user
+                                        if participants.count > 1 && !isFromUser {
+                                            // Find user name
+                                            let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
+                                            
                                             // Show a text msg with name
                                             ConversationTextMesage(msg: msg.msg,
                                                                    isFromUser: isFromUser,
-                                                                   name: "\(userOfMsg?.firstName ?? "") \(userOfMsg?.lastName ?? "")")
+                                                                   name: "\(userOfMsg?.firstName ?? "") \(userOfMsg?.lastName)")
+                                        } else {
+                                            // Text msg with no name
+                                            ConversationTextMesage(msg: msg.msg,
+                                                                   isFromUser: isFromUser)
+                                        }
                                     } else {
-                                        // Text msg with no name
-                                        ConversationTextMesage(msg: msg.msg,
-                                                               isFromUser: isFromUser)
+                                        // Image Message
+                                        ConversationPhotoMessage(imageUrl: msg.imageurl!,
+                                                                 isFromUser: isFromUser)
                                     }
-                                } else {
-                                    // Image Message
-                                    ConversationPhotoMessage(imageUrl: msg.imageurl!,
-                                                             isFromUser: isFromUser)
-                                }
-                                
-                                if !isFromUser {
-                                    Spacer()
                                     
-                                    Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
-                                        .font(.chatDate_Time)
-                                        .padding(.trailing)
+                                    if !isFromUser {
+                                        Spacer()
+                                        
+                                        Text(DateHelper.chatTimestampFrom(date: msg.timestamp))
+                                            .font(.chatDate_Time)
+                                            .padding(.trailing)
+                                    }
                                 }
+                                .padding(.horizontal)
+                                .id(index)
                             }
-                            .padding(.horizontal)
-                            .id(index)
                         }
+                        .padding(.top)
                     }
-                    .padding(.top)
                 }
                 .onAppear {
                     proxy.scrollTo(chatModel.messages.count - 1)
@@ -198,7 +204,7 @@ struct ConversationView: View {
             if participants.count > 0 {
                 // MARK: - Footer
                 ZStack {
-                    Color.white
+                    Color("secondBack")
                         .ignoresSafeArea()
                         .frame(height: 85)
                     HStack() {
@@ -211,7 +217,7 @@ struct ConversationView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 33, height: 33)
-                                .foregroundColor(Color("secondaryText"))
+                                .foregroundColor(Color("textBubble"))
                         }
                         
                         // TextField

@@ -31,7 +31,7 @@ struct TabBarButton: View {
                     .font(Font.tapBar)
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("tapBarButton"))
         }
     }
 }

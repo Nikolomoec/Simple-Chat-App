@@ -21,6 +21,7 @@ struct ProfileImageView: View {
                     Circle()
                         .foregroundColor(.white)
                     Text(user.firstName?.prefix(1) ?? "")
+                        .foregroundColor(.black)
                         .bold()
                 }
             } else {
@@ -52,9 +53,10 @@ struct ProfileImageView: View {
                         case .failure:
                             ZStack {
                                 Circle()
-                                    .foregroundColor(.white)
+                                
                                 Text(user.firstName?.prefix(1) ?? "")
                                     .bold()
+                                    .foregroundColor(.black)
                             }
                         }
                     }

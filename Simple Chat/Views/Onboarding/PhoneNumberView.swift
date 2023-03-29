@@ -30,7 +30,7 @@ struct PhoneNumberView: View {
                     .padding(.horizontal, 39)
                     .padding(.bottom, 34)
             }
-            .foregroundColor(Color("secondaryText"))
+            .foregroundColor(Color("onboarding"))
             .multilineTextAlignment(.center)
             
             // PhoneNumber TextField
@@ -38,7 +38,7 @@ struct PhoneNumberView: View {
                 
                 Rectangle()
                     .frame(height: 56)
-                    .foregroundColor(Color("TextField"))
+                    .foregroundColor(Color("searchBar"))
                 
                 HStack {
                     TextField("e.g. +1 613 515 0123", text: $phoneNumber)
