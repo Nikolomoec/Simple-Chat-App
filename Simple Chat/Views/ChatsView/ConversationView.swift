@@ -156,14 +156,14 @@ struct ConversationView: View {
                                     
                                     // Find user name
                                     let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
-
+                                    
                                     
                                     if msg.imageurl == "" {
                                         // Text Message
                                         
                                         // Determine if this is a group chat and a msg from another user
                                         if participants.count > 1 && !isFromUser {
-                                                                                        
+                                            
                                             // Show a text msg with name
                                             ConversationTextMesage(msg: msg.msg,
                                                                    isFromUser: isFromUser,
@@ -335,8 +335,9 @@ struct ConversationView: View {
             ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing, source: self.source)
         }
         .sheet(isPresented: $isContactPickerShowing) {
-            // When user dismis view, search the conversation with selected participants
-            if let participant = participants.first {
+            
+            if participants.count > 0 {
+                // When user dismis view, search the conversation with selected participants
                 chatModel.getChatFor(contacts: participants)
             }
             

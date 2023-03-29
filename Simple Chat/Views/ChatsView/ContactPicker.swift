@@ -33,50 +33,55 @@ struct ContactPicker: View {
                 ScrollView {
                     ForEach(contactsModel.filterUsers) { contact in
                         
+                        // Check if user is deactivated
+                        if contact.isactive {
+                            
                         // Determine if this user is selectedContact
                         var selectedContact = selectedContacts.contains { u in
                             u.id == contact.id
                         }
-                        
-                        ZStack {
-                            ContactRow(user: contact)
                             
-                            HStack {
-                                Spacer()
+                            ZStack {
+                                ContactRow(user: contact)
                                 
-                                Button {
-                                    // Toogle the contact to be added in selectedContacts
-                                    if selectedContact {
-                                        
-                                        // Find index where we need to remove the contact
-                                        let index = selectedContacts.firstIndex(of: contact)
-                                        
-                                        // Remove this contact from selectedContacts
-                                        if let index = index {
-                                            selectedContacts.remove(at: index)
-                                        }
-                                    } else {
-                                        // Impose the limit of 3
-                                        if selectedContacts.count < 3 {
-                                            // Add this contact to selectedContacts
-                                            selectedContacts.append(contact)
-                                        } else {
-                                            // Show message to say limit reached
+                                HStack {
+                                    Spacer()
+                                    
+                                    Button {
+                                        // Toogle the contact to be added in selectedContacts
+                                        if selectedContact {
                                             
+                                            // Find index where we need to remove the contact
+                                            let index = selectedContacts.firstIndex(of: contact)
+                                            
+                                            // Remove this contact from selectedContacts
+                                            if let index = index {
+                                                selectedContacts.remove(at: index)
+                                            }
+                                        } else {
+                                            // Impose the limit of 3
+                                            if selectedContacts.count < 3 {
+                                                // Add this contact to selectedContacts
+                                                selectedContacts.append(contact)
+                                            } else {
+                                                // Show message to say limit reached
+                                                
+                                            }
                                         }
+                                        
+                                    } label: {
+                                        Image(systemName: selectedContact ? "checkmark.circle.fill" : "checkmark.circle")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            .foregroundColor(Color("textBubble"))
                                     }
                                     
-                                } label: {
-                                    Image(systemName: selectedContact ? "checkmark.circle.fill" : "checkmark.circle")
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                        .foregroundColor(Color("textBubble"))
                                 }
-                                
                             }
+                            .padding(.top, 18)
+                            .padding(.horizontal, 30)
+                            
                         }
-                        .padding(.top, 18)
-                        .padding(.horizontal, 30)
                     }
                 }
             }
