@@ -14,6 +14,8 @@ struct PhoneNumberView: View {
     
     @State private var phoneNumber = ""
     
+    @State private var isButtonDisabled = false
+    
     var body: some View {
         
         VStack {
@@ -65,6 +67,8 @@ struct PhoneNumberView: View {
             Spacer()
             
             Button {
+                isButtonDisabled = true
+                
                 // Send their phone number to firebase Auth
                 AuthViewModel.sendPhoneNumber(phone: phoneNumber) { error in
                     if error == nil {
@@ -74,10 +78,19 @@ struct PhoneNumberView: View {
                         // Show an error
                         
                     }
+                    isButtonDisabled = false
                 }
             } label: {
-                Text("Next")
+                HStack {
+                    Text("Next")
+                    
+                    if isButtonDisabled {
+                        ProgressView()
+                            .padding(.leading, 4)
+                    }
+                }
             }
+            .disabled(isButtonDisabled)
             .buttonStyle(StartButtonStyle())
             .padding(.bottom, 77)
         }

@@ -14,6 +14,7 @@ struct AuthView: View {
     @Binding var isOnboarding: Bool
     
     @State private var authCode = ""
+    @State private var isButtonTapped = false
     
     @EnvironmentObject var contactsModel: ContactsViewModel
     @EnvironmentObject var chatsModel: ChatViewModel
@@ -67,6 +68,9 @@ struct AuthView: View {
             Spacer()
             
             Button {
+                
+                isButtonTapped = true
+                
                 // Send the verification code to Firebase
                 AuthViewModel.verifyCode(code: authCode) { error in
                     if error == nil {
@@ -88,10 +92,20 @@ struct AuthView: View {
                     } else {
                         // Display an error
                     }
+                    
+                    isButtonTapped = false
                 }
             } label: {
-                Text("Next")
+                HStack {
+                    Text("Next")
+                    
+                    if isButtonTapped {
+                        ProgressView()
+                            .padding(.leading, 4)
+                    }
+                }
             }
+            .disabled(isButtonTapped)
             .buttonStyle(StartButtonStyle())
             .padding(.bottom, 77)
         }
