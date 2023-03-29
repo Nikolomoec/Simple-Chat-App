@@ -12,6 +12,7 @@ struct ConversationTextMesage: View {
     var msg: String
     var isFromUser: Bool
     var name: String?
+    var isActive: Bool = true
     
     var body: some View {
         VStack (alignment: .leading, spacing: 4) {
@@ -22,7 +23,7 @@ struct ConversationTextMesage: View {
             }
             
             // Text
-            Text(msg)
+            Text(isActive ? msg : "Message Deleted")
                 .foregroundColor(isFromUser ? .white : Color("black-white"))
         }
         .font(.message)

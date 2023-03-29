@@ -154,18 +154,21 @@ struct ConversationView: View {
                                         }
                                     }
                                     
+                                    // Find user name
+                                    let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
+
+                                    
                                     if msg.imageurl == "" {
                                         // Text Message
                                         
                                         // Determine if this is a group chat and a msg from another user
                                         if participants.count > 1 && !isFromUser {
-                                            // Find user name
-                                            let userOfMsg = participants.filter({ $0.id == msg.senderId }).first
-                                            
+                                                                                        
                                             // Show a text msg with name
                                             ConversationTextMesage(msg: msg.msg,
                                                                    isFromUser: isFromUser,
-                                                                   name: "\(userOfMsg?.firstName ?? "") \(userOfMsg?.lastName)")
+                                                                   name: "\(userOfMsg?.firstName ?? "") \(userOfMsg?.lastName)",
+                                                                   isActive: userOfMsg?.isactive ?? true)
                                         } else {
                                             // Text msg with no name
                                             ConversationTextMesage(msg: msg.msg,
@@ -174,7 +177,8 @@ struct ConversationView: View {
                                     } else {
                                         // Image Message
                                         ConversationPhotoMessage(imageUrl: msg.imageurl!,
-                                                                 isFromUser: isFromUser)
+                                                                 isFromUser: isFromUser,
+                                                                 isActive: userOfMsg?.isactive ?? true)
                                     }
                                     
                                     if !isFromUser {

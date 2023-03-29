@@ -11,9 +11,19 @@ struct ConversationPhotoMessage: View {
     
     var imageUrl: String
     var isFromUser: Bool
+    var isActive: Bool = true
     
     var body: some View {
-        if let cachedImage = CacheService.getImage(forKey: imageUrl) {
+        
+        // If user is deactivated in group chats, instead of image it will show "Photo Deleted" Text msg
+        
+        if !isActive {
+            
+            ConversationTextMesage(msg: "Photo deleted",
+                                   isFromUser: isFromUser,
+                                   isActive: isActive)
+            
+        } else if let cachedImage = CacheService.getImage(forKey: imageUrl) {
             
             // Image is in cache, so lets use it
             cachedImage

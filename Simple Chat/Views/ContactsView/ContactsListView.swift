@@ -54,21 +54,26 @@ struct ContactsListView: View {
             }
             
             if contactsModel.filterUsers.count > 0 {
-                // List
+                
                 List(contactsModel.filterUsers) { user in
-                    Button {
-                        // Search an existing convo with this user
-                        chatModel.getChatFor(contacts: [user])
+                    
+                    // If user account is deactivated don't show it
+                    if user.isactive {
                         
-                        // Display ConverstionView
-                        isChatShowing = true
-                        
-                    } label: {
-                        ContactRow(user: user)
+                        Button {
+                            // Search an existing convo with this user
+                            chatModel.getChatFor(contacts: [user])
+                            
+                            // Display ConverstionView
+                            isChatShowing = true
+                            
+                        } label: {
+                            ContactRow(user: user)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        .buttonStyle(.plain)
                     }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .buttonStyle(.plain)
                 }
                 .listStyle(.plain)
                 .padding(.horizontal, 10)

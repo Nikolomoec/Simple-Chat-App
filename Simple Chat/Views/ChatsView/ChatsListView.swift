@@ -44,19 +44,32 @@ struct ChatsListView: View {
             if chatModel.chats.count > 0 {
                 
                 List(chatModel.chats) { chat in
-                    Button {
-                        // Set selected chat for the chatViewModel
-                        chatModel.selectedChat = chat
+                    
+                    // Find other participants of the chat
+                    let otherParticipants = contactsModel.getParticipants(ids: chat.chats)
+                    
+                    // Detect if this is a chat with deleted user
+                    if let otherParticipant =  otherParticipants.first,
+                       chat.numchats        == 2,
+                       !otherParticipant.isactive {
                         
-                        // Display ConversationView
-                        isChatShowing = true
+                        // This is conversation with deleted user, don't show anything
                         
-                    } label: {
-                        ChatListRow(chat: chat, otherParticipants: contactsModel.getParticipants(ids: chat.chats))
+                    } else {
+                        Button {
+                            // Set selected chat for the chatViewModel
+                            chatModel.selectedChat = chat
+                            
+                            // Display ConversationView
+                            isChatShowing = true
+                            
+                        } label: {
+                            ChatListRow(chat: chat, otherParticipants: otherParticipants)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        .buttonStyle(.plain)
                     }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .buttonStyle(.plain)
                 }
                 .listStyle(.plain)
                 
