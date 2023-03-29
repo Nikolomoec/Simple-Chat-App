@@ -65,7 +65,14 @@ struct SettingsView: View {
                     .tint(Color("black-white"))
                     
                     Button {
-                        // Delete user account
+                        // Deactivate User Account
+                        settingsModel.deactivateUser {
+                            
+                            // Log out the user and show onboarding
+                            AuthViewModel.logout()
+                            
+                            isOnboarding = true
+                        }
                         
                     } label: {
                         Text("Delete account")
