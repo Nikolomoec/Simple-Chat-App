@@ -43,10 +43,14 @@ struct ContactsListView: View {
                 RoundedRectangle(cornerRadius: 50)
                     .foregroundColor(Color("searchBar"))
                     .frame(height: 45)
-                TextField("Search a Contact", text: $search)
-                    .foregroundColor(Color("searchBarText"))
-                    .padding(10)
-                    .padding(.leading)
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                    TextField("Search a Contact", text: $search)
+                        .foregroundColor(Color("searchBarText"))
+                }
+                .padding(.leading)
+                .padding(10)
             }
             .padding(.horizontal, 35)
             .onChange(of: search) { _ in
